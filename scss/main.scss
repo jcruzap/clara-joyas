@@ -1,0 +1,38 @@
+// FONTS
+
+/* Raleway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap');
+/* Maitre & Maven pro & open sans*/
+@import url('https://fonts.googleapis.com/css2?family=Maitree&family=Maven+Pro&display=swap');
+// Open sans
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+/* Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+//IMPORT LIST
+
+/* Reset */
+@import './base/reset';
+/* Variables */
+@import './utilities/extend';
+/* Componentes */
+@import './components/botones';
+@import'./components/carousel';
+/* Header */
+@import './layout/header';
+/* Navbar */
+@import './layout/navbar';
+/* Footer */
+@import './layout/footer';
+/* Inicio */
+@import './views/inicio';
+/* Productos */
+@import './views/productos';
+/* Galeria */
+@import './views/galeria';
+/* Nosotros */
+@import './views/nosotros';
+/* Contacto */
+@import './views/contacto';
+/* Responsive */
+@import './views/responsive';

@@ -1,0 +1,75 @@
+.banner {
+    @extend %banner;
+}
+#bannerProductos{
+    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657546761/banner-productos_v3d6lq.jpg');
+}
+
+.medidaPortada {
+    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657546760/banner-medida_gjkvuj.jpg');
+    background-position: center;
+    background-position-y: 65%;
+    height: 550px;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 2rem;
+    justify-items: center;
+    width: 60vw;
+    margin: 2rem auto;
+
+    .producto {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 5px;
+        height: 32rem;
+        width: 20rem;
+        font-family: 'Open Sans', sans-serif;
+
+        img {
+            width: 100%;
+        }
+
+        .productoCard {
+            padding: 5px 10px;
+
+            .drow {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: .4rem;
+            }
+
+            p {
+                color: #3d3d3d;
+                margin-bottom: 1.7rem;
+                font-size: 14px;
+                padding: 0 1rem;
+            }
+
+            h4,
+            h3 {
+                font-weight: bold;
+                color: black;
+                margin: 1.5rem 0;
+            }
+
+            h4 {
+                font-size: 1.17rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            .productoBotones {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1rem;
+            }
+        }
+
+    }
+}

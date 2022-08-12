@@ -1,0 +1,120 @@
+.banner {
+    @extend %banner;
+}
+#bannerGaleria{
+    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1658018338/banner-galeria_zfd245_x6a9c4.jpg');
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1.5rem;
+    width: 70vw;
+    margin: 2rem auto;
+
+    .imagenGaleria {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(.3);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+
+    .imagen1 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .imagen2 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .imagen3 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    .imagen4 {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: -7;
+        grid-row-end: -5;
+    }
+
+    .imagen5 {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .imagen6 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .imagen7 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .imagen8 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 5;
+        grid-row-end: 7;
+    }
+
+    .imagen9 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+
+    .imagen10 {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+
+    .imagen11 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 6;
+        grid-row-end: 7;
+    }
+
+    .imagen12 {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 6;
+        grid-row-end: 7;
+    }
+}
+
+
+
+/* Custom lightbox */
+.lightbox .lb-image {
+    border-radius: 0px;
+    border: 0px solid #fff;
+}

@@ -1,0 +1,81 @@
+.banner {
+    @extend %banner;
+}
+
+#bannerNosotros {
+    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1658018339/banner-nosotros_xfen69_afpqht.jpg');
+}
+
+.carousel {
+    .carousel-inner {
+        .carousel-item {
+            .img {
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                height: 650px;
+            }
+
+            .carousel1 {
+                background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657660146/carousel1_uxwjw8.jpg');
+            }
+            .carousel2{
+                background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657660146/carousel3_v4feuk.jpg');
+            }
+            .carousel3{
+                background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657660146/carousel2_ukch9k.jpg');
+            }
+        }
+
+    }
+}
+
+.conocenos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    width: 90vw;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    .nosotrosDescripcion {
+        section {
+            padding: 0 4rem;
+        }
+
+    }
+
+    .nosotrosDescripcion,
+    .nosotrosPrincipal {
+        width: 50%;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.8rem;
+    }
+
+    h3 span {
+        font-weight: bold;
+    }
+
+    p {
+        text-align: left;
+        font-weight: 400;
+        font-family: 'Maven Pro', sans-serif;
+        margin: 0;
+        font-size: 1.2rem;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .nosotrosPrincipal {
+        // width: 50%;
+        filter: grayscale(1);
+        // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+}

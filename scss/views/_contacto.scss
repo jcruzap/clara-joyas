@@ -1,0 +1,121 @@
+.contenedorGeneral {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 2rem 0;
+    .seccionFormulario,
+    .horariosUbicacion,
+    .contactoTitulos {
+        width: 50vw;
+    }
+    .contactoTitulos {
+        margin: 2rem auto;
+
+        h3 {
+            margin: 1rem 0 .5rem;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-weight: 400;
+            font-family: 'Maven Pro', sans-serif;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        h3,
+        p {
+            text-align: center;
+        }
+    }
+
+    .seccionFormulario,
+    .horariosUbicacion {
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 10px;
+        border: 3px solid #bea88e;
+    }
+
+    .seccionFormulario {
+        .formulario {
+            .flexRow {
+                display: flex;
+                flex-direction: row;
+            }
+
+            width: 100%;
+
+            input[type=text],
+            input[type=email],
+            textarea {
+                padding-bottom: .5rem;
+                outline: none;
+                border-bottom: solid 2px #ccc;
+                font-size: 1rem;
+                font-family: 'Maven Pro', sans-serif;
+                margin-bottom: 2rem;
+            }
+
+            input[type=text],
+            input[type=email] {
+                width: 50%;
+            }
+
+            input[type=text]:focus,
+            input[type=email]:focus,
+            textarea:focus {
+                transition: 2s;
+                border-bottom: solid 2px #151D1B;
+            }
+
+            .apellido,
+            .motivo {
+                margin-left: 1rem;
+            }
+
+            textarea {
+                resize: none;
+                width: 100%;
+            }
+        }
+    }
+
+    .horariosUbicacion {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .horarios {
+            h4 {
+                font-weight: bold;
+                font-family: 'Raleway', sans-serif;
+                font-size: 1.2rem;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            ul li {
+                list-style-type: square;
+            }
+
+            ul li span {
+                font-weight: bold;
+            }
+        }
+        .mapa{
+            filter: grayscale(.5);
+            transition: 1s;
+            &:hover{
+                filter: grayscale(0);
+            }
+        }
+
+    }
+
+}

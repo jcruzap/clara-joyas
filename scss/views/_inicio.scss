@@ -1,0 +1,122 @@
+.contenedorInicio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "main main main"
+        "main main main"
+        "destacados destacados destacados"
+        "footer footer footer";
+    width: auto;
+
+    .main {
+        grid-area: main;
+
+        .acaInicio {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin: 7rem 0 4rem;
+
+            .nosotrosInicio {
+                padding: 0 1rem;
+                width: 40%;
+
+                h1 {
+                    margin-bottom: .5rem;
+                    font-weight: bold;
+                    font-family: 'Raleway', sans-serif;
+                    font-size: 1.8rem;
+                }
+
+                p {
+                    text-align: left;
+                    font-weight: 400;
+                    font-family: 'Maven Pro', sans-serif;
+                    margin: 0;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+
+
+    }
+
+    .seccionDestacados {
+        grid-area: destacados;
+        height: 650px;
+        background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1658018338/destacados-test-2_ifepsc_ozltdc.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        margin: 7rem 0;
+
+        .desTituloPrincipal {
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+
+        }
+
+        .destacados {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .cardDes {
+                background-color: white;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                height: 450px;
+                width: 350px;
+                border-radius: 5px;
+
+                .cardImg {
+                    width: 100%;
+                    height: 50%;
+                }
+
+                .cardBody {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    height: 50%;
+
+                    .cardTitulo {
+
+                        h4,
+                        p {
+                            margin: 0;
+                            text-align: center;
+                        }
+
+                        h4 {
+                            font-weight: bold;
+                            font-family: 'Raleway', sans-serif;
+                            margin-bottom: .5rem;
+                        }
+
+                        p {
+                            width: 80%;
+                            margin: 0 auto;
+                            color: #3d3d3d;
+                            text-align: center;
+                            font-size: 14px;
+                            font-family: 'Maven Pro', sans-serif;
+                        }
+                    }
+
+                    .cardBtn {
+                        width: 50%;
+                        margin: 0 auto;
+                    }
+
+                }
+
+            }
+        }
+    }
+}

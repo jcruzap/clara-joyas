@@ -1,0 +1,452 @@
+@media (max-width: 1660px) {
+
+    // Productos
+    .productos {
+        width: 80vw;
+    }
+
+    // Contactos
+    .contenedorGeneral {
+
+        .seccionFormulario,
+        .horariosUbicacion {
+            width: 60vw;
+        }
+    }
+}
+
+@media (max-width: 1361px) {
+
+    // Inicio
+    .contenedorInicio {
+        .main {
+            .acaInicio {
+                flex-direction: column;
+                align-items: center;
+                width: 70vw;
+                margin: 2rem auto;
+
+                .nosotrosInicio {
+                    width: 100%;
+                    padding: 0;
+
+                    p {
+                        margin-bottom: 1rem;
+                    }
+                }
+
+                .imagenPrincipal {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    // Nosotros
+    .conocenos {
+        flex-direction: column;
+        width: 70vw;
+
+        .nosotrosPrincipal,
+        .nosotrosDescripcion {
+            width: 100%;
+        }
+
+        .nosotrosDescripcion {
+            section {
+                padding: 1rem;
+            }
+        }
+    }
+
+    // Contacto
+    .contenedorGeneral {
+
+        .seccionFormulario,
+        .horariosUbicacion {
+            width: 70vw;
+        }
+    }
+
+}
+
+@media (max-width: 1240px) {
+
+    // Inicio
+    .contenedorInicio {
+        .seccionDestacados {
+            padding: 1rem;
+            height: auto;
+
+            .destacados {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+        }
+    }
+
+    // Productos
+    .productos {
+        grid-template-columns: 1fr 1fr;
+        width: 90vw;
+        row-gap: 1rem;
+    }
+
+    // Banners
+    .banner {
+        p {
+            font-size: 1rem;
+        }
+
+        h1,
+        h2 {
+            font-size: 3.5rem;
+        }
+    }
+
+    // Galeria
+    .galeria {
+        width: 80vw;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+
+        .imagenGaleria {
+            filter: grayscale(0);
+        }
+
+        .imagen4 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 5;
+        }
+
+        .imagen5 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        .imagen6 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+        .imagen7 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 8;
+            grid-row-end: 9;
+        }
+
+        .imagen8 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 6;
+            grid-row-end: 8;
+        }
+
+        .imagen9 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 5;
+            grid-row-end: 7;
+        }
+
+        .imagen10 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 7;
+            grid-row-end: 9;
+        }
+
+        .imagen11,
+        .imagen12 {
+            display: none;
+        }
+
+    }
+
+    // Contacto
+    .contenedorGeneral {
+
+        .seccionFormulario,
+        .horariosUbicacion {
+            width: 80vw;
+        }
+    }
+
+}
+
+@media (max-width: 1050px) {
+
+    // Inicio
+    .contenedorInicio {
+        .main {
+            .acaInicio {
+                width: 80vw;
+            }
+        }
+    }
+
+    // Contacto
+    .contenedorGeneral {
+
+        .seccionFormulario,
+        .horariosUbicacion {
+            width: 90vw;
+        }
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    // Header
+    .header {
+        height: 500px;
+
+        .navbar {
+            .container-fluid {
+                .offcanvas {
+                    .offcanvas-body {
+                        .navbar-nav {
+                            .nav-link {
+
+                                &:before,
+                                &:after {
+                                    display: none;
+                                }
+                            }
+
+                            .cmActive {
+                                color: #BEA88E;
+                            }
+                        }
+                    }
+                }
+
+                .fondoBlack {
+                    --bs-bg-opacity: 1;
+                    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+                }
+
+                .navbar-collapse {
+                    .logoHeader {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+
+    // Footer
+    .footer {
+        .contenedorFooter {
+
+            .seccionLogo {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+
+    // Footer
+    .footer {
+        .contenedorFooter {
+            flex-direction: column;
+
+            .seccionLinks,
+            .seccionRedes,
+            .seccionContacto,
+            .seccionLogo {
+                margin: 1rem 0;
+            }
+        }
+    }
+
+    // Inicio
+    .contenedorInicio {
+        .main {
+            .acaInicio {
+                width: 90vw;
+            }
+        }
+    }
+
+    // Productos
+    .productos {
+        grid-template-columns: 1fr;
+        width: 100vw;
+        gap: 1rem;
+    }
+
+    // Galeria
+    .galeria {
+        width: 90vw;
+        margin: 1rem auto;
+        gap: 1rem;
+    }
+
+    // Contacto
+    .contenedorGeneral {
+        .contactoTitulos {
+            width: 100vw;
+        }
+
+        .horariosUbicacion {
+            flex-direction: column;
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    // Footer
+    .footer {
+        .contenedorFooter {
+            .seccionLogo {
+                width: 40%;
+            }
+        }
+    }
+
+    // Galeria
+    .galeria {
+        gap: .5rem;
+    }
+
+    // Banners
+    .header {
+        background-position: unset;
+    }
+
+    .banner {
+        p {
+            font-size: .7rem;
+        }
+
+        h1,
+        h2 {
+            font-size: 3rem;
+        }
+    }
+
+    // Nosotros
+    .conocenos {
+        width: 90vw;
+
+        .nosotrosDescripcion {
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+    }
+
+    .carousel {
+        .carousel-inner {
+            .carousel-item {
+                .img {
+                    height: 350px;
+                }
+            }
+        }
+    }
+
+    // Inicio
+    .contenedorInicio {
+        .main {
+            .acaInicio {
+                .nosotrosInicio {
+                    h1 {
+                        font-size: 1.3rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+        }
+
+        .seccionDestacados {
+            margin: 0;
+
+            .destacados {
+                .cardDes {
+                    overflow: hidden;
+                    width: 325px;
+                }
+            }
+        }
+    }
+
+    // Contacto
+    .contenedorGeneral {
+        .contactoTitulos {
+
+            h3,
+            p {
+                width: 90vw;
+                margin: 0 auto;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    // Footer
+    .footer {
+        .contenedorFooter {
+            .seccionLogo {
+                width: 50%;
+            }
+
+            .seccionContacto,
+            .seccionLinks,
+            .seccionRedes {
+                h4 {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    // Contacto
+    .contenedorGeneral {
+        .horariosUbicacion {
+            .mapa {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media (max-width: 350px) {
+
+    // Footer
+    .footer {
+        .contenedorFooter {
+            .seccionLogo {
+                width: 60%;
+            }
+        }
+    }
+}

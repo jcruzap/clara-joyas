@@ -1,0 +1,11 @@
+.header {
+    grid-area: header;
+    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657546764/banner-inicio_xcuub0.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}

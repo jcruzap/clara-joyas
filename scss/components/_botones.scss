@@ -1,0 +1,24 @@
+.botones {
+    color: white !important;
+    text-decoration: none;
+    text-align: center;
+    padding: .5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: #151D1B;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten($color: #151D1B, $amount: 20);
+        transition: .5s;
+    }
+}
+
+.comprar {
+    background-color: #98ab42;
+    &:hover {
+        background-color: lighten($color: #98ab42, $amount: 10);
+        transition: .5s;
+    }
+}
