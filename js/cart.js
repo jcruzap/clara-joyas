@@ -31,10 +31,11 @@ const products = [
 const cart = [];
 let cartCounter = 0;
 class Cart {
-    constructor(cartId, name, description, price) {
+    constructor(cartId, name, description, source, price) {
         this.cartId = cartId
         this.name = name
         this.description = description
+        this.source = source
         this.price = price
     }
 
@@ -79,27 +80,45 @@ const cartHTML = (product) => {
         </div>
     `
 }
-const showCart = () => {
-    const cartIconSelector = document.getElementById('cart');
+// const buttonCart = () => {
+
+//     cart.forEach(product => {
+         
+//     });
+// }
+const cartIconSelector = document.getElementById('cart');
     const cartMenuSelector = document.getElementById('cartSide');
     const closeMenuSelector = document.getElementById('closeBtn');
+
     cartIconSelector.addEventListener("click", () => {
-        console.log(cartMenuSelector.classList);
         cartMenuSelector.classList.add("menuOpen"); 
     });
+
     closeMenuSelector.addEventListener("click", () => {
         cartMenuSelector.classList.remove("menuOpen");
     });
+const showCart = () => {
+    const cartList = document.getElementById('cartListSide');
+
+    let cartToHtml = "";
+    cart.forEach(product => {
+        cartToHtml += cartHTML(product);
+    });
+    cartList.innerHTML = cartToHtml; 
+    
 }
 const buttonProducts = () => {
+    
     const counterSelector = document.getElementById('counter');
     products.forEach(product =>{
-        buttonSelector = document.getElementById(`product-btn-${product.id}`);
+        let buttonSelector = document.getElementById(`product-btn-${product.id}`);
         buttonSelector.addEventListener("click", () => {
-            cart.push (new Cart(cartCounter,product.name,product.description,product.price));
+            cart.push (new Cart(cartCounter,product.name,product.description,product.source,product.price));
             cartCounter ++;
-            counterSelector.innerHTML= cartCounter; 
+            counterSelector.innerHTML= cartCounter;
+            showCart();
         });
+        
     });   
 }
 const showProducts = () => {
@@ -110,52 +129,7 @@ const showProducts = () => {
         productsToHtml += productsHTML(product);
     });
     productsSelector.innerHTML = productsToHtml;
-    buttonProducts();
-    
+    buttonProducts();    
 }
-showCart();
+
 showProducts();
-
-
-
-
-
-// let option = prompt("¿Desea comprar algun producto? * Si * o * No *").toLowerCase();
-
-
-// while (option != "si" && option != "no") {
-// alert("La opcion ingresada no es valida");
-// option = prompt("¿Desea comprar algun producto?")
-// }
-
-// if (option == "si") {
-// alert("Estos son nuestros productos disponibles:");
-// let productList = products.map((product) => "Codigo: " + product.code + " " + product.name + " " + product.price + "$");
-// alert(productList.join(' | '));
-
-// } else if (option == "no") {
-// alert("Gracias vuelva prontos!");
-// }
-
-
-// while (option != "no") {
-// let product = parseInt(prompt("Para agregar un producto al carrito coloque su codigo aqui"));
-// let amount = parseInt(prompt("¿Cuantas unidades desea llevar?"));
-// if (product >= 0 && amount > 0) {
-//     products.forEach((prod) => {
-//         if (prod.code == product && amount <= prod.stock) {
-//             cart.push(new Cart(prod.code, amount, prod.price, prod.name));
-//             prod.stock = prod.stock - amount;
-//         }
-//     });
-// }
-// option = prompt("¿Desea añadir otro producto? * Si * o * No *").toLowerCase();
-// }
-// if (cart != "") {
-// alert("*** Este es su carrito de compras ***");
-// for (const c of cart) {
-//     c.calcEndPrice();
-// }
-// let cartList = cart.map((cartItem) => `${cartItem.amount} ${cartItem.productName} , El precio final es un total de ${cartItem.productPrice}$`);
-// alert(cartList.join('  ---  '));
-// }
