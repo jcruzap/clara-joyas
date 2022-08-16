@@ -1,5 +1,5 @@
-const products = [
-    {
+// definicion arreglo de productos
+const products = [{
         id: 1,
         name: "Isla Lustrada",
         description: "Madera maciza guayubira. Detalles de lustrado que la hacen ver unica.",
@@ -28,8 +28,12 @@ const products = [
         source: "producto4.jpg"
     }
 ];
+
+// Definicion arreglo correspondiente al carrito de compras
 const cart = [];
 let cartCounter = 0;
+
+// Haciendo uso de clases y metodo constructor para crear el carrito 
 class Cart {
     constructor(cartId, name, description, source, price) {
         this.cartId = cartId
@@ -38,14 +42,10 @@ class Cart {
         this.source = source
         this.price = price
     }
-
-    // calcEndPrice() {
-    //     return this.productPrice = this.productPrice * this.amount;
-    // }
 }
-
+// Funcion flecha que recibe como parametro uno de los productos y lo transforma a una cadena
 const productsHTML = (product) => {
-    return`
+    return `
         <section class="producto">
             <img src="../img/products/${product.source}" alt="foto de producto">
             <div class="productoCard">
@@ -65,9 +65,9 @@ const productsHTML = (product) => {
                 </div>
             </div>
         </section>`
-    
-}
 
+}
+// Funcion flecha que recibe como parametro uno de los productos del carrito y lo transforma a una cadena
 const cartHTML = (product) => {
     return `
         <div class="card" style="width: 18rem;">
@@ -80,23 +80,20 @@ const cartHTML = (product) => {
         </div>
     `
 }
-// const buttonCart = () => {
-
-//     cart.forEach(product => {
-         
-//     });
-// }
+// Seleccionamos los elementos html correspondientes al carrito de compras y a su menu lateral
 const cartIconSelector = document.getElementById('cart');
-    const cartMenuSelector = document.getElementById('cartSide');
-    const closeMenuSelector = document.getElementById('closeBtn');
+const cartMenuSelector = document.getElementById('cartSide');
+const closeMenuSelector = document.getElementById('closeBtn');
 
-    cartIconSelector.addEventListener("click", () => {
-        cartMenuSelector.classList.add("menuOpen"); 
-    });
-
-    closeMenuSelector.addEventListener("click", () => {
-        cartMenuSelector.classList.remove("menuOpen");
-    });
+// Evento click sobre el icono de carrito de compras con esto llamamos al menu lateral para que se muestre
+cartIconSelector.addEventListener("click", () => {
+    cartMenuSelector.classList.add("menuOpen");
+});
+// Evento click sobre la "X" con esto cerramos el menu lateral
+closeMenuSelector.addEventListener("click", () => {
+    cartMenuSelector.classList.remove("menuOpen");
+});
+// Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
     const cartList = document.getElementById('cartListSide');
 
@@ -104,23 +101,25 @@ const showCart = () => {
     cart.forEach(product => {
         cartToHtml += cartHTML(product);
     });
-    cartList.innerHTML = cartToHtml; 
-    
+    cartList.innerHTML = cartToHtml;
+
 }
+// Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
-    
+
     const counterSelector = document.getElementById('counter');
-    products.forEach(product =>{
+    products.forEach(product => {
         let buttonSelector = document.getElementById(`product-btn-${product.id}`);
         buttonSelector.addEventListener("click", () => {
-            cart.push (new Cart(cartCounter,product.name,product.description,product.source,product.price));
-            cartCounter ++;
-            counterSelector.innerHTML= cartCounter;
+            cart.push(new Cart(cartCounter, product.name, product.description, product.source, product.price));
+            cartCounter++;
+            counterSelector.innerHTML = cartCounter;
             showCart();
         });
-        
-    });   
+
+    });
 }
+// Recorre la lista de productos y los muestra en la lista de cards
 const showProducts = () => {
     const productsSelector = document.getElementById('products');
     let productsToHtml = ""
@@ -129,7 +128,7 @@ const showProducts = () => {
         productsToHtml += productsHTML(product);
     });
     productsSelector.innerHTML = productsToHtml;
-    buttonProducts();    
+    buttonProducts();
 }
 
 showProducts();
