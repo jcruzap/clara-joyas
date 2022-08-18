@@ -36,9 +36,9 @@
                 <div class="offcanvas offcanvas-start" data-bs-hideresize="true" tabindex="-1"
                     id="offcanvasNavbarExample-expand-lg" aria-labelledby="offcanvasNavbarExample-expand-lg">
                     <div class="offcanvas-header bg-dark">
-
                         <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
+                            aria-label="Close">
+                        </button>
                     </div>
                     <div class="offcanvas-body fondoBlack">
                         <div class="navbar-collapse" id="navbarNavAltMarkup">
@@ -64,34 +64,29 @@
     <!-- Main -->
     <main>
         <!-- Carrito de compras - contador -->
-        <section class="cartContainer">
-            <div class="cart" id="cart">
-                <span class="contador" id="counter">0</span>
-                <i class="fas fa-shopping-cart"></i>
+        <div class="cartContainer">
+            <button class="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample"><span class="contador" id="counter">0</span><i class="fas fa-shopping-cart"></i></button>
+        </div>
+
+        <!-- Bootstrap offcanvas carrito de compras -->
+        <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h3 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h3>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
-        </section>
-        <!-- Menu lateral carrito de compras -->
-        <section class="cartMenu" id="cartSide">
-            <div class="btnContainer">
-                <button class="closeBtn" id="closeBtn"><i class="fas fa-times"></i></button>
+            <div class="offcanvas-body">
+                <div id="cartList">  
+                </div>
             </div>
-            <h2>Carrito de compras</h2>
-            <div class="cartList" id="cartListSide">
-                <!-- <div class="card" style="width: 18rem;">
-                    <img src="../img/products/producto1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div> -->
-            </div>
-        </section>
+        </div>
 
         <!-- Grilla de productos -->
         <div id="products" class="productos">
         </div>
+
         <!-- Portada de productos a medida -->
         <div class="medidaPortada banner">
             <p>TAMBIEN TRABAJAMOS</p>
