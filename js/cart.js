@@ -130,5 +130,5 @@ const showProducts = () => {
     productsSelector.innerHTML = productsToHtml;
     buttonProducts();
 }
-
+// Mostramos la lista de productos en el inicio 
 showProducts();
