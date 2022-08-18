@@ -53,9 +53,18 @@
     }
 }
 
-#cartList {
-    color: black;
+.offcanvas {
+    .offcanvas-body {
+        #cartList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: black;
+        }
+    }
 }
+
 
 .productos {
     display: grid;
