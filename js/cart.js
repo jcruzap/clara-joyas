@@ -75,12 +75,25 @@ const cartHTML = (product) => {
             <div class="card-body">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text">${product.description}</p>
-                <a href="#" class="btn btn-danger">Eliminar</a>
+                <a href="#" class="btn btn-danger" id="product-btn-${product.cartId}" >Eliminar</a>
             </div>
         </div>
     `
 }
-
+// Añade los eventos a los botones del carrito de compras lateral para poder eliminarlos
+const buttonCart = () => {
+    const counterSelector = document.getElementById('counter');
+    cart.forEach(product => {
+        let cartButtonSelector = document.getElementById(`product-btn-${product.cartId}`);
+        cartButtonSelector.addEventListener("click", () =>{
+            const index = cart.findIndex((el) => el.cartId == product.cartId);
+            cart.splice(index, 1);
+            cartCounter --;
+            counterSelector.innerHTML = cartCounter;
+            showCart();
+        });
+    });
+}
 // Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
     const cartList = document.getElementById('cartList');
@@ -90,11 +103,10 @@ const showCart = () => {
         cartToHtml += cartHTML(product);
     });
     cartList.innerHTML = cartToHtml;
-
+    buttonCart();
 }
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
-
     const counterSelector = document.getElementById('counter');
     products.forEach(product => {
         let buttonSelector = document.getElementById(`product-btn-${product.id}`);
