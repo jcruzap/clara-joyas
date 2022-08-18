@@ -80,22 +80,10 @@ const cartHTML = (product) => {
         </div>
     `
 }
-// Seleccionamos los elementos html correspondientes al carrito de compras y a su menu lateral
-const cartIconSelector = document.getElementById('cart');
-const cartMenuSelector = document.getElementById('cartSide');
-const closeMenuSelector = document.getElementById('closeBtn');
 
-// Evento click sobre el icono de carrito de compras con esto llamamos al menu lateral para que se muestre
-cartIconSelector.addEventListener("click", () => {
-    cartMenuSelector.classList.add("menuOpen");
-});
-// Evento click sobre la "X" con esto cerramos el menu lateral
-closeMenuSelector.addEventListener("click", () => {
-    cartMenuSelector.classList.remove("menuOpen");
-});
 // Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
-    const cartList = document.getElementById('cartListSide');
+    const cartList = document.getElementById('cartList');
 
     let cartToHtml = "";
     cart.forEach(product => {
