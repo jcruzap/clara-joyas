@@ -43,6 +43,7 @@ class Cart {
         this.price = price
     }
 }
+
 // Funcion flecha que recibe como parametro uno de los productos y lo transforma a una cadena
 const productsHTML = (product) => {
     return `
@@ -67,6 +68,7 @@ const productsHTML = (product) => {
         </section>`
 
 }
+
 // Funcion flecha que recibe como parametro uno de los productos del carrito y lo transforma a una cadena
 const cartHTML = (product) => {
     return `
@@ -80,6 +82,7 @@ const cartHTML = (product) => {
         </div>
     `
 }
+
 // Añade los eventos a los botones del carrito de compras lateral para poder eliminarlos
 const buttonCart = () => {
     const counterSelector = document.getElementById('counter');
@@ -94,6 +97,7 @@ const buttonCart = () => {
         });
     });
 }
+
 // Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
     const cartList = document.getElementById('cartList');
@@ -105,20 +109,25 @@ const showCart = () => {
     cartList.innerHTML = cartToHtml;
     buttonCart();
 }
+
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
     const counterSelector = document.getElementById('counter');
+    const cartIconSelector = document.getElementById('cartIcon');
+    
     products.forEach(product => {
         let buttonSelector = document.getElementById(`product-btn-${product.id}`);
         buttonSelector.addEventListener("click", () => {
+            cartIconSelector.classList.add("animate__shakeX");
             cart.push(new Cart(cartCounter, product.name, product.description, product.source, product.price));
             cartCounter++;
             counterSelector.innerHTML = cartCounter;
             showCart();
         });
-
+        
     });
 }
+
 // Recorre la lista de productos y los muestra en la lista de cards
 const showProducts = () => {
     const productsSelector = document.getElementById('products');
@@ -130,5 +139,6 @@ const showProducts = () => {
     productsSelector.innerHTML = productsToHtml;
     buttonProducts();
 }
+
 // Mostramos la lista de productos en el inicio 
 showProducts();
