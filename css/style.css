@@ -12,6 +12,44 @@
   border: 0; }
 
 /* Variables */
+.offcanvas .offcanvas-body #cartList .producto, .productos .producto {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+  height: 32rem;
+  width: 20rem;
+  font-family: 'Open Sans', sans-serif;
+  background-color: white; }
+  .offcanvas .offcanvas-body #cartList .producto img, .productos .producto img {
+    width: 100%; }
+  .offcanvas .offcanvas-body #cartList .producto .productoCard, .productos .producto .productoCard {
+    padding: 5px 10px; }
+    .offcanvas .offcanvas-body #cartList .producto .productoCard .drow, .productos .producto .productoCard .drow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .4rem; }
+    .offcanvas .offcanvas-body #cartList .producto .productoCard p, .productos .producto .productoCard p {
+      color: #3d3d3d;
+      margin-bottom: 1.7rem;
+      font-size: 14px;
+      padding: 0 1rem; }
+    .offcanvas .offcanvas-body #cartList .producto .productoCard h4, .productos .producto .productoCard h4,
+    .offcanvas .offcanvas-body #cartList .producto .productoCard h3,
+    .productos .producto .productoCard h3 {
+      font-weight: bold;
+      color: black;
+      margin: 1.5rem 0; }
+    .offcanvas .offcanvas-body #cartList .producto .productoCard h4, .productos .producto .productoCard h4 {
+      font-size: 1.17rem; }
+    
+    .offcanvas .offcanvas-body #cartList .producto .productoCard h3,
+    .productos .producto .productoCard h3 {
+      font-size: 1rem; }
+    .offcanvas .offcanvas-body #cartList .producto .productoCard .productoBotones, .productos .producto .productoCard .productoBotones {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem; }
+
 .banner {
   display: flex;
   flex-direction: column;
@@ -22,12 +60,14 @@
     font-size: 1rem;
     font-family: 'Raleway', sans-serif;
     margin: 0; }
-  .banner h1, .banner h2 {
+  .banner h1,
+  .banner h2 {
     color: white;
     font-size: 4rem;
     font-family: 'Raleway', sans-serif;
     margin: 0; }
-  .banner p, .banner h1, .banner h2 {
+  .banner p, .banner h1,
+  .banner h2 {
     font-weight: bold;
     text-align: center; }
 
@@ -317,12 +357,24 @@
       text-align: center;
       border-radius: 24px; }
 
+.mostrarCarrito {
+  color: white;
+  text-decoration: none; }
+  .mostrarCarrito:hover {
+    color: white; }
+
 .offcanvas .offcanvas-body #cartList {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   color: black; }
+  .offcanvas .offcanvas-body #cartList .card .card-body {
+    font-family: 'Open Sans', sans-serif !important; }
+    .offcanvas .offcanvas-body #cartList .card .card-body .card-text span {
+      font-weight: bold; }
+  .offcanvas .offcanvas-body #cartList .cartListVacio {
+    color: white; }
 
 .productos {
   display: grid;
@@ -331,39 +383,6 @@
   justify-items: center;
   width: 60vw;
   margin: 2rem auto; }
-  .productos .producto {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    border-radius: 5px;
-    height: 32rem;
-    width: 20rem;
-    font-family: 'Open Sans', sans-serif; }
-    .productos .producto img {
-      width: 100%; }
-    .productos .producto .productoCard {
-      padding: 5px 10px; }
-      .productos .producto .productoCard .drow {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: .4rem; }
-      .productos .producto .productoCard p {
-        color: #3d3d3d;
-        margin-bottom: 1.7rem;
-        font-size: 14px;
-        padding: 0 1rem; }
-      .productos .producto .productoCard h4,
-      .productos .producto .productoCard h3 {
-        font-weight: bold;
-        color: black;
-        margin: 1.5rem 0; }
-      .productos .producto .productoCard h4 {
-        font-size: 1.17rem; }
-      .productos .producto .productoCard h3 {
-        font-size: 1rem; }
-      .productos .producto .productoCard .productoBotones {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 1rem; }
 
 /* Galeria */
 #bannerGaleria {
