@@ -71,19 +71,9 @@
             align-items: center;
             gap: 15px;
             color: black;
+
             .producto {
                 @extend %producto;
-            }
-            .card {
-                .card-body {
-                    font-family: 'Open Sans', sans-serif !important;
-
-                    .card-text {
-                        span {
-                            font-weight: bold;
-                        }
-                    }
-                }
             }
 
             .cartListVacio {
@@ -92,7 +82,6 @@
         }
     }
 }
-
 
 .productos {
     display: grid;
