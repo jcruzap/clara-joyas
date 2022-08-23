@@ -134,7 +134,7 @@ const buttonProducts = () => {
             let productAmountSelector = document.getElementById(`amount-${product.id}`).valueAsNumber;
 
             if (productAmountSelector > 0) {
-                cartIconSelector.classList.add("animate__shakeX");
+                cartIconSelector.classList.add("animate__headShake");
                 cart.push(new Cart(
                     cartCounter,
                     product.name,
