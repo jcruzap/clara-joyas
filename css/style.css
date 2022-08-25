@@ -616,6 +616,10 @@
       .contenedorGeneral .horariosUbicacion .mapa:hover {
         filter: grayscale(0); }
 
+/* Carrito */
+.carrito {
+  min-height: 50vh; }
+
 /* Responsive */
 @media (max-width: 1660px) {
   .productos {

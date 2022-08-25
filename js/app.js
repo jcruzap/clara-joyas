@@ -1,39 +1,19 @@
-// definicion arreglo de productos
-const products = [{
-        id: 1,
-        name: "Isla Lustrada",
-        description: "Madera maciza guayubira. Detalles de lustrado que la hacen ver unica.",
-        price: 15000,
-        source: "producto1.jpg"
-    },
-    {
-        id: 2,
-        name: "Desayunador c/sillas",
-        description: "Pino robusto con uniones espigadas. Incluye banquetas.",
-        price: 24950,
-        source: "producto2.jpg"
-    },
-    {
-        id: 3,
-        name: "Vinoteca",
-        description: "Ideal para almacenar esos vinos que tanto deseamos conservar.",
-        price: 1000,
-        source: "producto3.jpg"
-    },
-    {
-        id: 4,
-        name: "Bajo mesada",
-        description: "Mueble bajo mesada con tres puertas. No incluye mesada.",
-        price: 17600,
-        source: "producto4.jpg"
-    }
-];
 
-// Definicion arreglo correspondiente al carrito de compras
+// Arreglo de carrito de compras inicial
 const cart = [];
-let cartCounter = 0;
 
-// Haciendo uso de clases y metodo constructor para crear el carrito 
+// Contador de items carrito
+let cartCounter = 0; 
+
+
+const storedLocally = JSON.parse(localStorage.getItem("carrito"));
+if (storedLocally != null) {
+    for (const local of storedLocally) {
+        cart.push(local);
+    }
+}
+
+// Clase Cart para armar los objetos dentro del carrito de compras
 class Cart {
     constructor(cartId, name, description, source, price, amount) {
         this.cartId = cartId
@@ -45,7 +25,7 @@ class Cart {
     }
 }
 
-// Funcion flecha que recibe como parametro uno de los productos y lo transforma a una cadena
+// Recibe un producto como parametro y retorna su equivalente en HTML en formato cadena de texto => listado de productos
 const productsHTML = (product) => {
     return `
         <section class="producto">
@@ -67,11 +47,9 @@ const productsHTML = (product) => {
                 </div>
             </div>
         </section>`
-
-
 }
 
-// Funcion flecha que recibe como parametro uno de los productos del carrito y lo transforma a una cadena
+// Recibe un producto como parametro y retorna su equivalente en HTML en formato cadena de texto => carrito de compras
 const cartHTML = (product) => {
     return `
     <section class="producto">
@@ -90,7 +68,7 @@ const cartHTML = (product) => {
     </section>`
 }
 
-// Añade los eventos a los botones del carrito de compras lateral para poder eliminarlos
+// Recorre cada elemento dentro del carrito de compras para asignarle un evento a cada boton de eliminar
 const buttonCart = () => {
     const counterSelector = document.getElementById('counter');
     cart.forEach(product => {
@@ -103,34 +81,20 @@ const buttonCart = () => {
             showCart();
         });
     });
-}
-
-// Recorre el carrito de compras y lo muestra en el menu lateral
-const showCart = () => {
-    const cartList = document.getElementById('cartList');
-    const subTotalSelector = document.getElementById('subTotal');
-    let cartToHtml = "";
-    let priceTotal = 0;
-    cart.forEach(product => {
-        priceTotal += (product.price * product.amount);
-        
-        cartToHtml += cartHTML(product);
-    });
-    // console.log(priceTotal);
-    subTotalSelector.innerHTML = `$${priceTotal}`;
-    cartList.innerHTML = cartToHtml;
-    // buttonCart();
-}
+} /* Deshabilitado temporalmente */
 
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
 
-    const counterSelector = document.getElementById('counter');
-    const cartIconSelector = document.getElementById('cartIcon');
+    const counterSelector = document.getElementById('counter'); /* span contador */
+    const cartIconSelector = document.getElementById('cartIcon'); /* icono carrito de compras */
 
     products.forEach(product => {
+
         let buttonSelector = document.getElementById(`product-btn-${product.id}`);
+
         buttonSelector.addEventListener("click", () => {
+
             let productAmountSelector = document.getElementById(`amount-${product.id}`).valueAsNumber;
 
             if (productAmountSelector > 0) {
@@ -143,10 +107,14 @@ const buttonProducts = () => {
                     product.price,
                     productAmountSelector
                 ));
-                console.log(cart);
-                cartCounter++;
-                counterSelector.innerHTML = cartCounter;
+                // console.log(cart);
+                localSave("carrito", JSON.stringify(cart));
+
+                cartCounter++; /* incremento de los items del carrito */
+                counterSelector.innerHTML = cartCounter; /* Renderiza los items del carrito en un span */
+
                 Swal.fire({
+                    /* Modal custom de la libreria sweetalert */
                     title: 'Producto añadido con éxito al carrito',
                     icon: 'success',
                     showCloseButton: true,
@@ -159,7 +127,9 @@ const buttonProducts = () => {
                 });
                 showCart();
             } else {
+
                 Swal.fire({
+                    /* Modal custom de la libreria sweetalert */
                     icon: 'error',
                     title: 'Oops...',
                     text: 'La cantidad seleccionada no es correcta!'
@@ -169,6 +139,28 @@ const buttonProducts = () => {
         });
 
     });
+
+}
+
+// Recorre el carrito de compras y lo muestra en el menu lateral
+const showCart = () => {
+    const cartList = document.getElementById('cartList');
+    const subTotalSelector = document.getElementById('subTotal');
+
+    // const storedLocally = JSON.parse(localStorage.getItem("carrito"));
+    // console.log(storedLocally);
+
+    let cartToHtml = "";
+    let priceTotal = 0;
+    cart.forEach(product => {
+
+        priceTotal += (product.price * product.amount);
+        cartToHtml += cartHTML(product);
+
+    });
+    subTotalSelector.innerHTML = `$${priceTotal}`;
+    cartList.innerHTML = cartToHtml;
+    // buttonCart();
 }
 
 // Recorre la lista de productos y los muestra en la lista de cards
@@ -183,5 +175,11 @@ const showProducts = () => {
     buttonProducts();
 }
 
+// Guarda en localStorage
+const localSave = (key, value) => {
+    localStorage.setItem(key, value);
+}
+
 // Mostramos la lista de productos en el inicio 
 showProducts();
+showCart()
