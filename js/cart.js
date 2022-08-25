@@ -17,20 +17,20 @@ const cartToHtml = (product) => {
     return `
     <tr>
         <td>
-            <img src="https://place-hold.it/240x213" alt="Imagen de producto">
+            <img src="../img/products/${product.source}" alt="Imagen de producto">
             <div>
                 <h5>${product.name}</h5>
                 <p>${product.description}</p>
             </div>
         </td>
         <td>
-            ${product.price}
+            $${product.price}
         </td>
         <td>
             <input type="number" id="contador" name="amount" id="" min="1" max="100" step="1" value="${product.amount}">
         </td>
         <td>
-            ${product.price}
+            $${product.price}
         </td>
         <td>
             <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

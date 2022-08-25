@@ -1,16 +1,8 @@
 // Arreglo de carrito de compras inicial
 const cart = [];
 
-// Contador de items carrito
-let cartCounter = 0;
+let cartCounter = 0; /* Contador de items carrito */
 const counterSelector = document.getElementById('counter'); /* span contador */
-
-// const storedLocally = JSON.parse(localStorage.getItem("cart"));
-// if (storedLocally != null) {
-//     for (const local of storedLocally) {
-//         cart.push(local);
-//     }
-// }
 
 // Clase Cart para armar los objetos dentro del carrito de compras
 class Cart {
@@ -163,11 +155,10 @@ const showCart = () => {
     }
 
     // cart.forEach(product => {
-
     //     priceTotal += (product.price * product.amount);
     //     cartToHtml += cartHTML(product);
-
     // });
+    
     subTotalSelector.innerHTML = `$${priceTotal}`;
     cartList.innerHTML = cartToHtml;
     // buttonCart();
