@@ -3,7 +3,7 @@ const cart = [];
 
 // Contador de items carrito
 let cartCounter = 0;
-
+const counterSelector = document.getElementById('counter'); /* span contador */
 
 // const storedLocally = JSON.parse(localStorage.getItem("cart"));
 // if (storedLocally != null) {
@@ -85,7 +85,7 @@ const buttonCart = () => {
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
 
-    const counterSelector = document.getElementById('counter'); /* span contador */
+    
     const cartIconSelector = document.getElementById('cartIcon'); /* icono carrito de compras */
 
     products.forEach(product => {
@@ -107,13 +107,15 @@ const buttonProducts = () => {
                     productAmountSelector
                 ));
 
-                localSave("cart", JSON.stringify(cart));
-
                 cartCounter++; /* incremento de los items del carrito */
-                counterSelector.innerHTML = cartCounter; /* Renderiza los items del carrito en un span */
+                counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
+
+                localSave("cart", JSON.stringify(cart));
+                localSave("cartCounter", JSON.stringify(cartCounter));
+
 
                 Swal.fire({
-                    /* Modal custom de la libreria sweetalert */
+                    /* Modal custom sweetalert */
                     title: 'Producto añadido con éxito al carrito',
                     icon: 'success',
                     showCloseButton: true,
@@ -128,7 +130,7 @@ const buttonProducts = () => {
             } else {
 
                 Swal.fire({
-                    /* Modal custom de la libreria sweetalert */
+                    /* Modal custom sweetalert */
                     icon: 'error',
                     title: 'Oops...',
                     text: 'La cantidad seleccionada no es correcta!'
@@ -143,16 +145,18 @@ const buttonProducts = () => {
 
 // Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
-    const cartList = document.getElementById('cartList');
-    const subTotalSelector = document.getElementById('subTotal');
+    const cartList = document.getElementById('cartList'); /* Selector lista lateral */
+    const subTotalSelector = document.getElementById('subTotal'); /* Selector span subtotal */
 
-    const storedLocally = JSON.parse(localStorage.getItem("cart"));
-    // console.log(storedLocally);
-
+    const ProductStoredLocally = JSON.parse(localStorage.getItem("cart")); /* localStorage parseo */
+    
+    let CounterStoredLocally = JSON.parse(localStorage.getItem("cartCounter"));
+    counterSelector.innerHTML = CounterStoredLocally;
     let cartToHtml = "";
     let priceTotal = 0;
-    if (storedLocally != null) {
-        for (const product of storedLocally) {
+
+    if (ProductStoredLocally != null) {
+        for (const product of ProductStoredLocally) {
             priceTotal += (product.price * product.amount);
             cartToHtml += cartHTML(product);
         }

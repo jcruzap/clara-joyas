@@ -1,3 +1,47 @@
-.carrito{
-    min-height: 50vh;
+.carrito {
+    min-height: 70vh;
+    width: 70vw;
+    margin: 0 auto;
+
+    .carritoTabla {
+        width: 100%;
+        table-layout: fixed;
+
+        thead {
+
+            th {
+                font-family: 'Raleway', sans-serif;
+                font-weight: bold;
+                font-size: 1.2em;
+                padding: 1.2em 0;
+            }
+
+            th:nth-child(1) {
+                width: 40%;
+            }
+
+            th:nth-child(2),
+            th:nth-child(3),
+            th:nth-child(4),
+            th:nth-child(5) {
+                width: 10%;
+            }
+
+            // th:nth-child(3) {
+            //     width: 10%;
+            // }
+            // th:nth-child(4) {
+            //     width: 10%;
+            // }
+            // th:nth-child(5) {
+            //     width: 10%;
+            // }
+
+        }
+        tbody{
+            #contador{
+               border: 1px solid black; 
+            }
+        }
+    }
 }
