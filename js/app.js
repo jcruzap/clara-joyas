@@ -1,17 +1,16 @@
-
 // Arreglo de carrito de compras inicial
 const cart = [];
 
 // Contador de items carrito
-let cartCounter = 0; 
+let cartCounter = 0;
 
 
-const storedLocally = JSON.parse(localStorage.getItem("carrito"));
-if (storedLocally != null) {
-    for (const local of storedLocally) {
-        cart.push(local);
-    }
-}
+// const storedLocally = JSON.parse(localStorage.getItem("cart"));
+// if (storedLocally != null) {
+//     for (const local of storedLocally) {
+//         cart.push(local);
+//     }
+// }
 
 // Clase Cart para armar los objetos dentro del carrito de compras
 class Cart {
@@ -107,8 +106,8 @@ const buttonProducts = () => {
                     product.price,
                     productAmountSelector
                 ));
-                // console.log(cart);
-                localSave("carrito", JSON.stringify(cart));
+
+                localSave("cart", JSON.stringify(cart));
 
                 cartCounter++; /* incremento de los items del carrito */
                 counterSelector.innerHTML = cartCounter; /* Renderiza los items del carrito en un span */
@@ -147,17 +146,24 @@ const showCart = () => {
     const cartList = document.getElementById('cartList');
     const subTotalSelector = document.getElementById('subTotal');
 
-    // const storedLocally = JSON.parse(localStorage.getItem("carrito"));
+    const storedLocally = JSON.parse(localStorage.getItem("cart"));
     // console.log(storedLocally);
 
     let cartToHtml = "";
     let priceTotal = 0;
-    cart.forEach(product => {
+    if (storedLocally != null) {
+        for (const product of storedLocally) {
+            priceTotal += (product.price * product.amount);
+            cartToHtml += cartHTML(product);
+        }
+    }
 
-        priceTotal += (product.price * product.amount);
-        cartToHtml += cartHTML(product);
+    // cart.forEach(product => {
 
-    });
+    //     priceTotal += (product.price * product.amount);
+    //     cartToHtml += cartHTML(product);
+
+    // });
     subTotalSelector.innerHTML = `$${priceTotal}`;
     cartList.innerHTML = cartToHtml;
     // buttonCart();
