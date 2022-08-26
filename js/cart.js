@@ -3,8 +3,9 @@ const cartLocallySaved = JSON.parse(localStorage.getItem("cart"));
 
 // Eliminar productos del carrito
 const deleteProduct = () => {
-    for (const product of cartLocallySaved) {
-        let deleteButton = document.getElementById(`delete-${product.cartId}`);
+    cartLocallySaved.forEach(product => {
+        let deleteButton = document.getElementById(product.cartId);
+        // console.log(deleteButton.getAttribute('id'));
         deleteButton.addEventListener("click", () => {
             Swal.fire({
                 title: 'Esta seguro?',
@@ -17,22 +18,62 @@ const deleteProduct = () => {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const index = cartLocallySaved.findIndex((el) => el.cartId == product.cartId);
-                    console.log(index);
-                    // const localAfterDelete =  cartLocallySaved.splice(index, 1);
-                    // localSave("cart", JSON.stringify(localAfterDelete));
-                    // localStorage.setItem("cart", JSON.stringify(localAfterDelete));
-                    // showFinalCart();
+                    
+                    let buttonId = deleteButton.getAttribute('id');
+                    // console.log(buttonId);
+                    
+                    if(product.cartId == buttonId){
+                        // console.log(product.cartId);
+                        console.log(cartLocallySaved);
+                    }
+    
+                    showFinalCart();
+    
                     /* Swal.fire(
                         'Elmininado!',
                         'Su producto fue retirado del carrito.',
                         'success'
-                    ) */
+                    ); */
                 }
-            })
+            });
+    
+        });
+    });
+    // for (const product of cartLocallySaved) {
+    //     let deleteButton = document.getElementById(product.cartId);
+    //     // console.log(deleteButton.getAttribute('id'));
+    //     deleteButton.addEventListener("click", () => {
+    //         Swal.fire({
+    //             title: 'Esta seguro?',
+    //             text: "Esta accion eliminar un producto del carrito!",
+    //             icon: 'warning',
+    //             showCancelButton: true,
+    //             confirmButtonColor: '#3085d6',
+    //             cancelButtonColor: '#d33',
+    //             confirmButtonText: 'Si, eliminar!',
+    //             cancelButtonText: 'Cancelar'
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+                    
+    //                 let buttonId = deleteButton.getAttribute('id');
+    //                 console.log(buttonId);
 
-        })
-    }
+    //                 // let index = cartLocallySaved.findIndex((el) => el.cartId === buttonId);
+    //                 // console.log(index);
+                    
+
+    //                 showFinalCart();
+
+    //                 /* Swal.fire(
+    //                     'Elmininado!',
+    //                     'Su producto fue retirado del carrito.',
+    //                     'success'
+    //                 ); */
+    //             }
+    //         });
+
+    //     });
+    // }
 }
 // Render carrito
 const showFinalCart = () => {
@@ -67,7 +108,7 @@ const cartToHtml = (product) => {
             $${product.price}
         </td>
         <td>
-            <button class="btn btn-danger" id="delete-${product.cartId}"><i class="fas fa-trash-alt"></i></button>
+            <button class="btn btn-danger" id="${product.cartId}"><i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
     `

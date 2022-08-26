@@ -93,10 +93,10 @@ const buttonProducts = () => {
             let productAmountSelector = document.getElementById(`amount-${product.id}`).valueAsNumber;
             
             if (localGet != null) {
-                console.log("no esta vacio");
+                // console.log("no esta vacio");
                 if (productAmountSelector > 0) {
                     const newCart = new Cart(
-                        cartCounter,
+                        product.id,
                         product.name,
                         product.description,
                         product.source,
@@ -105,7 +105,9 @@ const buttonProducts = () => {
                     );
 
                     const newLocalAdd = localGet.concat(newCart);
-                    localSet('cart', newLocalAdd);
+                    localSet('cart', newLocalAdd);/* guarda el array completo */
+                    
+                    cartCounter++; /* incremento de los items del carrito */
 
                     Swal.fire({
                         /* Modal custom sweetalert */
@@ -130,12 +132,12 @@ const buttonProducts = () => {
                 }
 
             } else if (localGet === null) {
-                console.log("esta vacio");
+                // console.log("esta vacio");
                 if (productAmountSelector > 0) {
 
                     cartIconSelector.classList.add("animate__headShake");
                     cart.push(new Cart(
-                        cartCounter,
+                        product.id,
                         product.name,
                         product.description,
                         product.source,
@@ -144,8 +146,8 @@ const buttonProducts = () => {
                     ));
 
                     localSet('cart', cart);
-
-                    // cartCounter++; /* incremento de los items del carrito */
+                    
+                    cartCounter++; /* incremento de los items del carrito */
                     // counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
 
                     Swal.fire({
@@ -157,8 +159,7 @@ const buttonProducts = () => {
                         focusConfirm: false,
                         confirmButtonColor: '#98ab42',
                         cancelButtonColor: '#151D1B',
-                        // confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
-                        confirmButtonText: 'Ok',
+                        confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
                         cancelButtonText: 'Seguir comprando',
                     });
                     showCart();
