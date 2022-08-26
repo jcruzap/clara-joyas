@@ -1,5 +1,6 @@
 // Arreglo de carrito de compras inicial
-const cart = [];
+
+// const cart = [];
 
 let cartCounter = 0; /* Contador de items carrito */
 const counterSelector = document.getElementById('counter'); /* span contador */
@@ -77,62 +78,103 @@ const buttonCart = () => {
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
 
-    
+    const cart = [];
+
     const cartIconSelector = document.getElementById('cartIcon'); /* icono carrito de compras */
+
 
     products.forEach(product => {
 
         let buttonSelector = document.getElementById(`product-btn-${product.id}`);
 
         buttonSelector.addEventListener("click", () => {
+            const localGet = JSON.parse(localStorage.getItem('cart'));
 
             let productAmountSelector = document.getElementById(`amount-${product.id}`).valueAsNumber;
+            
+            if (localGet != null) {
+                console.log("no esta vacio");
+                if (productAmountSelector > 0) {
+                    const newCart = new Cart(
+                        cartCounter,
+                        product.name,
+                        product.description,
+                        product.source,
+                        product.price,
+                        productAmountSelector
+                    );
 
-            if (productAmountSelector > 0) {
-                cartIconSelector.classList.add("animate__headShake");
-                cart.push(new Cart(
-                    cartCounter,
-                    product.name,
-                    product.description,
-                    product.source,
-                    product.price,
-                    productAmountSelector
-                ));
+                    const newLocalAdd = localGet.concat(newCart);
+                    localSet('cart', newLocalAdd);
 
-                cartCounter++; /* incremento de los items del carrito */
-                counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
+                    Swal.fire({
+                        /* Modal custom sweetalert */
+                        title: 'Producto añadido con éxito al carrito',
+                        icon: 'success',
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonColor: '#98ab42',
+                        cancelButtonColor: '#151D1B',
+                        confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
+                        cancelButtonText: 'Seguir comprando',
+                    });
 
-                localSave("cart", JSON.stringify(cart));
-                localSave("cartCounter", JSON.stringify(cartCounter));
+                    showCart();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'La cantidad seleccionada no es correcta!'
+                    });
+                }
 
+            } else if (localGet === null) {
+                console.log("esta vacio");
+                if (productAmountSelector > 0) {
 
-                Swal.fire({
-                    /* Modal custom sweetalert */
-                    title: 'Producto añadido con éxito al carrito',
-                    icon: 'success',
-                    showCloseButton: true,
-                    showCancelButton: true,
-                    focusConfirm: false,
-                    confirmButtonColor: '#98ab42',
-                    cancelButtonColor: '#151D1B',
-                    confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
-                    cancelButtonText: 'Seguir comprando',
-                });
-                showCart();
-            } else {
+                    cartIconSelector.classList.add("animate__headShake");
+                    cart.push(new Cart(
+                        cartCounter,
+                        product.name,
+                        product.description,
+                        product.source,
+                        product.price,
+                        productAmountSelector
+                    ));
 
-                Swal.fire({
-                    /* Modal custom sweetalert */
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'La cantidad seleccionada no es correcta!'
-                });
+                    localSet('cart', cart);
+
+                    // cartCounter++; /* incremento de los items del carrito */
+                    // counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
+
+                    Swal.fire({
+                        /* Modal custom sweetalert */
+                        title: 'Producto añadido con éxito al carrito',
+                        icon: 'success',
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonColor: '#98ab42',
+                        cancelButtonColor: '#151D1B',
+                        // confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
+                        confirmButtonText: 'Ok',
+                        cancelButtonText: 'Seguir comprando',
+                    });
+                    showCart();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'La cantidad seleccionada no es correcta!'
+                    });
+                }
             }
+
 
         });
 
     });
-
 }
 
 // Recorre el carrito de compras y lo muestra en el menu lateral
@@ -141,7 +183,7 @@ const showCart = () => {
     const subTotalSelector = document.getElementById('subTotal'); /* Selector span subtotal */
 
     const ProductStoredLocally = JSON.parse(localStorage.getItem("cart")); /* localStorage parseo */
-    
+
     let CounterStoredLocally = JSON.parse(localStorage.getItem("cartCounter"));
     counterSelector.innerHTML = CounterStoredLocally;
     let cartToHtml = "";
@@ -158,7 +200,7 @@ const showCart = () => {
     //     priceTotal += (product.price * product.amount);
     //     cartToHtml += cartHTML(product);
     // });
-    
+
     subTotalSelector.innerHTML = `$${priceTotal}`;
     cartList.innerHTML = cartToHtml;
     // buttonCart();
@@ -174,11 +216,6 @@ const showProducts = () => {
     });
     productsSelector.innerHTML = productsToHtml;
     buttonProducts();
-}
-
-// Guarda en localStorage
-const localSave = (key, value) => {
-    localStorage.setItem(key, value);
 }
 
 // Mostramos la lista de productos en el inicio 
