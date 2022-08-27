@@ -3,9 +3,8 @@ const cartLocallySaved = JSON.parse(localStorage.getItem("cart"));
 
 // Eliminar productos del carrito
 const deleteProduct = () => {
-    cartLocallySaved.forEach(product => {
+    cartLocallySaved.forEach((product,index) => {
         let deleteButton = document.getElementById(product.cartId);
-        // console.log(deleteButton.getAttribute('id'));
         deleteButton.addEventListener("click", () => {
             Swal.fire({
                 title: 'Esta seguro?',
@@ -18,62 +17,27 @@ const deleteProduct = () => {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    
+                    let dataIndex;
                     let buttonId = deleteButton.getAttribute('id');
-                    // console.log(buttonId);
-                    
-                    if(product.cartId == buttonId){
-                        // console.log(product.cartId);
-                        console.log(cartLocallySaved);
+                    if(buttonId === product.cartId){
+                        dataIndex = index;
                     }
-    
+                    cartLocallySaved.splice(dataIndex,1);
+                    
+                    localSet('cart',cartLocallySaved);
+                    
                     showFinalCart();
     
-                    /* Swal.fire(
+                    Swal.fire(
                         'Elmininado!',
                         'Su producto fue retirado del carrito.',
                         'success'
-                    ); */
+                    );
                 }
             });
     
         });
     });
-    // for (const product of cartLocallySaved) {
-    //     let deleteButton = document.getElementById(product.cartId);
-    //     // console.log(deleteButton.getAttribute('id'));
-    //     deleteButton.addEventListener("click", () => {
-    //         Swal.fire({
-    //             title: 'Esta seguro?',
-    //             text: "Esta accion eliminar un producto del carrito!",
-    //             icon: 'warning',
-    //             showCancelButton: true,
-    //             confirmButtonColor: '#3085d6',
-    //             cancelButtonColor: '#d33',
-    //             confirmButtonText: 'Si, eliminar!',
-    //             cancelButtonText: 'Cancelar'
-    //         }).then((result) => {
-    //             if (result.isConfirmed) {
-                    
-    //                 let buttonId = deleteButton.getAttribute('id');
-    //                 console.log(buttonId);
-
-    //                 // let index = cartLocallySaved.findIndex((el) => el.cartId === buttonId);
-    //                 // console.log(index);
-                    
-
-    //                 showFinalCart();
-
-    //                 /* Swal.fire(
-    //                     'Elmininado!',
-    //                     'Su producto fue retirado del carrito.',
-    //                     'success'
-    //                 ); */
-    //             }
-    //         });
-
-    //     });
-    // }
 }
 // Render carrito
 const showFinalCart = () => {

@@ -110,7 +110,6 @@ const buttonProducts = () => {
                     cartCounter++; /* incremento de los items del carrito */
 
                     Swal.fire({
-                        /* Modal custom sweetalert */
                         title: 'Producto añadido con éxito al carrito',
                         icon: 'success',
                         showCloseButton: true,
@@ -132,7 +131,6 @@ const buttonProducts = () => {
                 }
 
             } else if (localGet === null) {
-                // console.log("esta vacio");
                 if (productAmountSelector > 0) {
 
                     cartIconSelector.classList.add("animate__headShake");
@@ -148,10 +146,9 @@ const buttonProducts = () => {
                     localSet('cart', cart);
                     
                     cartCounter++; /* incremento de los items del carrito */
-                    // counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
+                    counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
 
                     Swal.fire({
-                        /* Modal custom sweetalert */
                         title: 'Producto añadido con éxito al carrito',
                         icon: 'success',
                         showCloseButton: true,
@@ -181,30 +178,18 @@ const buttonProducts = () => {
 // Recorre el carrito de compras y lo muestra en el menu lateral
 const showCart = () => {
     const cartList = document.getElementById('cartList'); /* Selector lista lateral */
-    const subTotalSelector = document.getElementById('subTotal'); /* Selector span subtotal */
+    const ProductStoredLocally = JSON.parse(localStorage.getItem('cart')); /* localStorage parseo */
 
-    const ProductStoredLocally = JSON.parse(localStorage.getItem("cart")); /* localStorage parseo */
-
-    let CounterStoredLocally = JSON.parse(localStorage.getItem("cartCounter"));
-    counterSelector.innerHTML = CounterStoredLocally;
     let cartToHtml = "";
-    let priceTotal = 0;
 
-    if (ProductStoredLocally != null) {
+    if (ProductStoredLocally === null) {
+        console.log("no hay carrito");
+    }else{
         for (const product of ProductStoredLocally) {
-            priceTotal += (product.price * product.amount);
             cartToHtml += cartHTML(product);
         }
     }
-
-    // cart.forEach(product => {
-    //     priceTotal += (product.price * product.amount);
-    //     cartToHtml += cartHTML(product);
-    // });
-
-    subTotalSelector.innerHTML = `$${priceTotal}`;
     cartList.innerHTML = cartToHtml;
-    // buttonCart();
 }
 
 // Recorre la lista de productos y los muestra en la lista de cards
