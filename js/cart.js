@@ -17,8 +17,10 @@ const deleteProduct = () => {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
+
                     let dataIndex;
                     let buttonId = deleteButton.getAttribute('id');
+
                     if(buttonId === product.cartId){
                         dataIndex = index;
                     }
@@ -43,12 +45,16 @@ const deleteProduct = () => {
 const showFinalCart = () => {
     const tableSelector = document.getElementById('tableBody');
     let cartString = "";
-
-    for (const product of cartLocallySaved) {
-        cartString += cartToHtml(product);
+    if(cartLocallySaved != null){
+        for (const product of cartLocallySaved) {
+            cartString += cartToHtml(product);
+        }
+        tableSelector.innerHTML = cartString
+        deleteProduct();
+    }else{
+        tableSelector.innerHTML = "<h5>Su carrito de compras esta vacio</h5>"
     }
-    tableSelector.innerHTML = cartString
-    deleteProduct();
+    
 }
 
 // Carrito a html

@@ -1,9 +1,3 @@
-// Arreglo de carrito de compras inicial
-
-// const cart = [];
-
-let cartCounter = 0; /* Contador de items carrito */
-const counterSelector = document.getElementById('counter'); /* span contador */
 
 // Clase Cart para armar los objetos dentro del carrito de compras
 class Cart {
@@ -60,28 +54,13 @@ const cartHTML = (product) => {
     </section>`
 }
 
-// Recorre cada elemento dentro del carrito de compras para asignarle un evento a cada boton de eliminar
-const buttonCart = () => {
-    const counterSelector = document.getElementById('counter');
-    cart.forEach(product => {
-        let cartButtonSelector = document.getElementById(`delete-btn-${product.cartId}`);
-        cartButtonSelector.addEventListener("click", () => {
-            const index = cart.findIndex((el) => el.cartId == product.cartId);
-            cart.splice(index, 1);
-            cartCounter--;
-            counterSelector.innerHTML = cartCounter;
-            showCart();
-        });
-    });
-} /* Deshabilitado temporalmente */
-
 // Añade los eventos correspondientes para cada boton, incrementa el contador de productos y los añade al menu lateral
 const buttonProducts = () => {
 
     const cart = [];
 
     const cartIconSelector = document.getElementById('cartIcon'); /* icono carrito de compras */
-
+    const counterSelector = document.getElementById('counter'); /* span contador */
 
     products.forEach(product => {
 
@@ -91,9 +70,8 @@ const buttonProducts = () => {
             const localGet = JSON.parse(localStorage.getItem('cart'));
 
             let productAmountSelector = document.getElementById(`amount-${product.id}`).valueAsNumber;
-            
+
             if (localGet != null) {
-                // console.log("no esta vacio");
                 if (productAmountSelector > 0) {
                     const newCart = new Cart(
                         product.id,
@@ -105,9 +83,8 @@ const buttonProducts = () => {
                     );
 
                     const newLocalAdd = localGet.concat(newCart);
-                    localSet('cart', newLocalAdd);/* guarda el array completo */
-                    
-                    cartCounter++; /* incremento de los items del carrito */
+                    localSet('cart', newLocalAdd); /* guarda el array completo */
+
 
                     Swal.fire({
                         title: 'Producto añadido con éxito al carrito',
@@ -145,9 +122,6 @@ const buttonProducts = () => {
 
                     localSet('cart', cart);
                     
-                    cartCounter++; /* incremento de los items del carrito */
-                    counterSelector.innerHTML = cartCounter; /* Renderiza contador carrito */
-
                     Swal.fire({
                         title: 'Producto añadido con éxito al carrito',
                         icon: 'success',
@@ -182,13 +156,12 @@ const showCart = () => {
 
     let cartToHtml = "";
 
-    if (ProductStoredLocally === null) {
-        console.log("no hay carrito");
-    }else{
+    if (ProductStoredLocally != null) {
         for (const product of ProductStoredLocally) {
             cartToHtml += cartHTML(product);
         }
     }
+
     cartList.innerHTML = cartToHtml;
 }
 
