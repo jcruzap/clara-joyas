@@ -34,7 +34,7 @@ const showAllCart = () => {
 
     table.innerHTML = "";
 
-    if (cartStorageGet) {
+    if (cartStorageGet != null) {
         cartStorageGet.forEach(product => {
             table.innerHTML += cartToHtml(product);
         });

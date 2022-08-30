@@ -1,34 +1,3 @@
-// Arreglo con productos
-const products = [{
-        id: 1,
-        name: "Isla Lustrada",
-        description: "Madera maciza guayubira. Detalles de lustrado que la hacen ver unica.",
-        price: 15000,
-        img: "producto1.jpg"
-    },
-    {
-        id: 2,
-        name: "Desayunador c/sillas",
-        description: "Pino robusto con uniones espigadas. Incluye banquetas.",
-        price: 24950,
-        img: "producto2.jpg"
-    },
-    {
-        id: 3,
-        name: "Vinoteca",
-        description: "Ideal para almacenar esos vinos que tanto deseamos conservar.",
-        price: 1000,
-        img: "producto3.jpg"
-    },
-    {
-        id: 4,
-        name: "Bajo mesada",
-        description: "Mueble bajo mesada con tres puertas. No incluye mesada.",
-        price: 17600,
-        img: "producto4.jpg"
-    }
-];
-
 // Selectores y variables globales
 
 let cart = []; /* Arreglo inicial carrito de compras */
@@ -94,6 +63,17 @@ const addItem = (e) => {
                     if (cart[i].name === product.name) {
                         cart[i].amount++;
                         storageSet('cart', cart);
+                        // Toastify custom
+                        Toastify({
+                            text: "Genial, añadiste otro producto!",
+                            offset: {
+                                x: 50,
+                                y: 50 
+                            },
+                            style: {
+                                background: "#98ab42"
+                            }
+                        }).showToast();
                         return null;
                     }
                 }
@@ -126,6 +106,7 @@ const addItemToCart = (cartItem) => {
         confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
         cancelButtonText: 'Seguir comprando',
     });
+
     cart.push(cartItem); /* Guarda en arreglo */
     storageSet("cart", cart); /* Guarda en local storage */
 }
