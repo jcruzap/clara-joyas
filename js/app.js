@@ -76,11 +76,19 @@ const eventsAddButton = () => {
 // Selecciona el producto para añdir al carrito
 const addItem = (e) => {
     const button = e.target;
-    let addButtonId = parseInt(button.getAttribute('id'));
+    let addButtonId = parseInt(button.getAttribute('id')); /* Obtengo ID del boton clickeado */
     let cartItem;
     let cartLength = cart.length;
     products.forEach(product => {
+        /* Seleccionamos el producto que coincida con el ID obtenido */
         if (product.id === addButtonId) {
+            /* 
+            -Con esta logica evitamos repetir el renderizado
+            de un producto en el carrito y solo incrementamos su cantidad.
+            *************************************************************
+            -Si el producto no se repite entonces lo sumamos al carrito
+            como un nuevo item.
+            */
             if (cartLength) {
                 for (let i = 0; i < cartLength; i++) {
                     if (cart[i].name === product.name) {
@@ -100,6 +108,7 @@ const addItem = (e) => {
             }
         }
     });
+    /* Solo guardamos si el item no es null */
     cartItem != null ? addItemToCart(cartItem) : false
 }
 
