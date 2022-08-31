@@ -19,7 +19,7 @@ const cartToHtml = (product) => {
             <input type="number" id="contador" name="amount" id="" min="1" max="100" step="1" value="${product.amount}">
         </td>
         <td>
-            $${product.price}
+            $${product.price * product.amount}
         </td>
         <td>
             <button class="btn btn-danger" id="${product.cartId}">Eliminar</button>

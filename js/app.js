@@ -65,6 +65,7 @@ const addItem = (e) => {
                         storageSet('cart', cart);
                         // Toastify custom
                         Toastify({
+                            duration: 1000,
                             text: "Genial, añadiste otro producto!",
                             offset: {
                                 x: 50,
@@ -72,7 +73,7 @@ const addItem = (e) => {
                             },
                             style: {
                                 background: "#98ab42"
-                            }
+                            },
                         }).showToast();
                         return null;
                     }
@@ -94,6 +95,9 @@ const addItem = (e) => {
 
 // Añade el producto al carrito
 const addItemToCart = (cartItem) => {
+    const cartIcon = document.getElementById('cartIcon');
+    cartIcon.classList.add('animate__shakeX');
+    setTimeout(() => {cartIcon.classList.remove('animate__shakeX')},1000);
     // Sweet alert custom modal
     Swal.fire({
         title: 'Producto añadido con éxito al carrito',
