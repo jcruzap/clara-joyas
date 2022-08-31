@@ -1,5 +1,6 @@
 // Consulta a localStorage
 const cartStorageGet = JSON.parse(localStorage.getItem("cart"));
+let cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
 
 // Render html de productos del carrito de compras
 const cartToHtml = (product) => {
@@ -76,6 +77,8 @@ const removeItem = (e) => {
                 }
                 cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
+                cartCounterLocal--;
+                localStorage.setItem("cart-counter",JSON.stringify(cartCounterLocal));
                 showAllCart(); /* Muestra el nuevo carrito en pantalla */
             }
         });

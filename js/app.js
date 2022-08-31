@@ -1,8 +1,9 @@
 // Selectores y variables globales
-
 let cart = []; /* Arreglo inicial carrito de compras */
+let cartCounter = 0;
+const shoppingBag = document.querySelector('.fa-shopping-bag');
 
-// Render html de productos
+// Render html de productos en la pantalla principal
 const productsToHtml = (product) => {
     return `
         <section class="producto">
@@ -21,6 +22,22 @@ const productsToHtml = (product) => {
                 </div>
             </div>
         </section>`
+}
+
+// Render html de productos del carrito en la barra lateral
+const cartToHtml = (product) => {
+    return `
+    <section class="producto">
+        <img src="../img/products/${product.img}" alt="foto de producto">
+        <div class="productoCard">
+            <div class="drow">
+                <div class="productoTitulo">
+                    <h3>${product.name}</h3>
+                    <h4 class="precioCarrito">${product.amount} x <span>$${product.price}</span></h4>
+                </div>
+            </div>
+        </div>
+    </section>`
 }
 
 // Muestra todos los productos en pantalla
@@ -63,13 +80,14 @@ const addItem = (e) => {
                     if (cart[i].name === product.name) {
                         cart[i].amount++;
                         storageSet('cart', cart);
+                        showAllCart();
                         // Toastify custom
                         Toastify({
                             duration: 1000,
                             text: "Genial, añadiste otro producto!",
                             offset: {
                                 x: 50,
-                                y: 50 
+                                y: 50
                             },
                             style: {
                                 background: "#98ab42"
@@ -95,9 +113,20 @@ const addItem = (e) => {
 
 // Añade el producto al carrito
 const addItemToCart = (cartItem) => {
-    const cartIcon = document.getElementById('cartIcon');
-    cartIcon.classList.add('animate__shakeX');
-    setTimeout(() => {cartIcon.classList.remove('animate__shakeX')},1000);
+    /* Animacion del icono con carrito de compras y contador */
+    // const cartIcon = document.getElementById('cartIcon');
+    // cartIcon.classList.add('animate__shakeX');
+    // setTimeout(() => {
+    //     cartIcon.classList.remove('animate__shakeX')
+    // }, 1000);
+
+    /* Incrementa el contador de items y se guarda en local storage */
+    cartCounter++;
+    storageSet('cart-counter', cartCounter);
+    setTimeout(() => {
+        shoppingBag.setAttribute('data-after', cartCounter);
+    },500)
+    
     // Sweet alert custom modal
     Swal.fire({
         title: 'Producto añadido con éxito al carrito',
@@ -113,8 +142,16 @@ const addItemToCart = (cartItem) => {
 
     cart.push(cartItem); /* Guarda en arreglo */
     storageSet("cart", cart); /* Guarda en local storage */
+    showAllCart();
 }
+const showAllCart = () => {
+    const cartList = document.getElementById('cartList');
+    cartList.innerHTML = "";
+    cart.forEach(product => {
+        cartList.innerHTML += cartToHtml(product);
+    });
 
+}
 // Guardar carrito en local storage
 const storageSet = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
@@ -123,9 +160,14 @@ const storageSet = (key, value) => {
 // Al cargar la pagina obtiene el carrito de local storage y lo guarda en el arreglo
 window.onload = function () {
     const storage = JSON.parse(localStorage.getItem('cart'));
+    const cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
     if (storage) {
         cart = storage;
+        cartCounter = cartCounterLocal;
     }
+    shoppingBag.setAttribute('data-after', cartCounter);
+    // Llamamos a la funcuon que muestra los productos en el carrito lateral
+    showAllCart();
 }
 
 // Llamamos a la funcion que muestra los productos en pantalla

@@ -211,6 +211,19 @@
       .navbar .container-fluid .navbar-collapse .nav-link:hover:before, .navbar .container-fluid .navbar-collapse .nav-link:hover:after {
         opacity: 1;
         transform: translateY(0px); }
+      .navbar .container-fluid .navbar-collapse .nav-link .fa-shopping-bag {
+        font-size: 1.3rem; }
+        .navbar .container-fluid .navbar-collapse .nav-link .fa-shopping-bag:after {
+          content: attr(data-after);
+          font-size: 14px;
+          font-family: 'Open Sans', sans-serif;
+          color: #fff;
+          background: #98ab42;
+          border-radius: 50%;
+          padding: 0 5px;
+          position: relative;
+          left: -3px;
+          top: -10px; }
     .navbar .container-fluid .navbar-collapse .cmActive:before, .navbar .container-fluid .navbar-collapse .cmActive:after {
       opacity: 1;
       transform: translateY(0px); }
@@ -344,39 +357,6 @@
   background-position: center;
   background-position-y: 65%;
   height: 550px; }
-
-.cartContainer {
-  width: 56vw;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: space-around; }
-  .cartContainer .cart {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background: #292d48;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    cursor: pointer; }
-    .cartContainer .cart i {
-      font-size: 1.5rem;
-      color: white; }
-    .cartContainer .cart .contador {
-      font-size: 12px;
-      font-weight: 600;
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      background-color: #98ab42;
-      line-height: 24px;
-      padding: 0 5px;
-      height: 24px;
-      min-width: 24px;
-      color: white;
-      text-align: center;
-      border-radius: 24px; }
 
 .mostrarCarrito {
   color: white;
