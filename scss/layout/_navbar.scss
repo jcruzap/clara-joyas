@@ -1,4 +1,5 @@
 .navbar {
+    transition: all .5s ease-in-out;
     .container-fluid {
         .offcanvas {
             --bs-offcanvas-width: 250px;
@@ -98,8 +99,17 @@
                 }
             }
 
+            .nav-bag{
+                background: none;
+            }
             
         }
     }
 
+}
+.sticky{
+    width: 100%;
+    background-color:#151D1B;
+    position: fixed;
+    transition: all .5s ease-in-out;
 }
