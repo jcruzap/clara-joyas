@@ -52,7 +52,7 @@
                                 <a class="nav-link" href="./galeria.html">Galeria</a>
                                 <a class="nav-link" href="./acerca-de.html">Nosotros</a>
                                 <a class="nav-link" href="./contacto.html">Contacto</a>
-                                <button class="nav-link nav-bag" type="button"
+                                <button class="nav-link nav-bag animate__animated" type="button"
                                     data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                                     aria-controls="offcanvasExample">Carrito
                                     <i class="fas fa-shopping-bag" data-after="0"></i></button>
@@ -69,13 +69,6 @@
     </header>
     <!-- Main -->
     <main>
-        <!-- Carrito de compras - contador -->
-        <!-- <div class="cartContainer">
-            <button class="cart animate__animated" id="cartIcon" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="contador"
-                    id="counter">0</span><i class="fas fa-shopping-cart"></i></button>
-        </div> -->
-
         <!-- Bootstrap offcanvas carrito de compras -->
         <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
@@ -101,8 +94,8 @@
                         </div>
                     </section> -->
                 </div>
-                <div>
-                    <a href="./carrito-compras.html" id="goToCart"> Ver carrito</a>
+                <div class="verCarrito">
+                    <a href="./carrito-compras.html" class="botones comprar">Ver carrito <i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
         </div>
@@ -110,7 +103,7 @@
         <!-- Grilla de productos -->
         <div id="products" class="productos">
         </div>
-
+        
         <!-- Portada de productos a medida -->
         <div class="medidaPortada banner">
             <p>TAMBIEN TRABAJAMOS</p>

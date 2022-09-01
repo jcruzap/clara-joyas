@@ -13,14 +13,6 @@
     height: 550px;
 }
 
-.mostrarCarrito {
-    color: white;
-    text-decoration: none;
-
-    &:hover {
-        color: white;
-    }
-}
 
 .offcanvas {
     .offcanvas-body {
@@ -40,6 +32,13 @@
             }
         }
     }
+    .verCarrito{
+        max-width: 20rem;
+        margin: 2rem auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
 }
 
 .productos {

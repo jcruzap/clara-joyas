@@ -2,6 +2,7 @@
 const cartStorageGet = JSON.parse(localStorage.getItem("cart"));
 let cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
 
+
 // Render html de productos del carrito de compras
 const cartToHtml = (product) => {
     return `
@@ -17,7 +18,7 @@ const cartToHtml = (product) => {
             $${product.price}
         </td>
         <td>
-            <input type="number" id="contador" name="amount" id="" min="1" max="100" step="1" value="${product.amount}">
+            <input type="number" name="amount" id="amount-${product.cartId}" min="1" max="100" step="1" value="${product.amount}">
         </td>
         <td>
             $${product.price * product.amount}
@@ -31,6 +32,9 @@ const cartToHtml = (product) => {
 
 // Muestra todos los productos del carrito de compras en pantalla
 const showAllCart = () => {
+    const shoppingBag = document.querySelector('.fa-shopping-bag');
+    shoppingBag.setAttribute('data-after', cartCounterLocal); 
+
     const table = document.getElementById('tableBody'); /* Contenedor de la tabla de productos */
 
     table.innerHTML = "";
@@ -40,10 +44,10 @@ const showAllCart = () => {
             table.innerHTML += cartToHtml(product);
         });
         eventsDeleteButton();
-    }else{
+    } else {
         table.innerHTML = "<h5>Su carrito esta vacio</h5>"
     }
-    
+
 }
 
 // Añade los EventListeners a los botones de eliminar del carrito 
@@ -78,13 +82,14 @@ const removeItem = (e) => {
                 cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
                 cartCounterLocal--;
-                localStorage.setItem("cart-counter",JSON.stringify(cartCounterLocal));
+                localStorage.setItem("cart-counter", JSON.stringify(cartCounterLocal));
                 showAllCart(); /* Muestra el nuevo carrito en pantalla */
             }
         });
     });
 
 }
+
 
 // Llamamos a la funcion que muestro los productos en pantalla
 showAllCart();

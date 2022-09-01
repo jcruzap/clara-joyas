@@ -369,12 +369,6 @@
   background-position-y: 65%;
   height: 550px; }
 
-.mostrarCarrito {
-  color: white;
-  text-decoration: none; }
-  .mostrarCarrito:hover {
-    color: white; }
-
 .offcanvas .offcanvas-body #cartList {
   display: flex;
   flex-direction: column;
@@ -383,6 +377,12 @@
   color: black; }
   .offcanvas .offcanvas-body #cartList .cartListVacio {
     color: white; }
+
+.offcanvas .verCarrito {
+  max-width: 20rem;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: flex-end; }
 
 .productos {
   display: grid;

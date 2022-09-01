@@ -87,7 +87,7 @@ const addItem = (e) => {
                             text: "Genial, añadiste otro producto!",
                             offset: {
                                 x: 50,
-                                y: 50
+                                y: 150
                             },
                             style: {
                                 background: "#98ab42"
@@ -114,16 +114,14 @@ const addItem = (e) => {
 // Añade el producto al carrito
 const addItemToCart = (cartItem) => {
     /* Animacion del icono con carrito de compras y contador */
-    // const cartIcon = document.getElementById('cartIcon');
-    // cartIcon.classList.add('animate__shakeX');
-    // setTimeout(() => {
-    //     cartIcon.classList.remove('animate__shakeX')
-    // }, 1000);
+    const cartButton = document.querySelector('.nav-bag');
+    cartButton.classList.add('animate__shakeX');
 
     /* Incrementa el contador de items y se guarda en local storage */
     cartCounter++;
     storageSet('cart-counter', cartCounter);
     setTimeout(() => {
+        cartButton.classList.remove('animate__shakeX');
         shoppingBag.setAttribute('data-after', cartCounter);
     },500)
     
@@ -136,7 +134,7 @@ const addItemToCart = (cartItem) => {
         focusConfirm: false,
         confirmButtonColor: '#98ab42',
         cancelButtonColor: '#151D1B',
-        confirmButtonText: '<a href="./carrito-compras.html" class="mostrarCarrito"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
+        confirmButtonText: '<a href="./carrito-compras.html" class="botones comprar"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
         cancelButtonText: 'Seguir comprando',
     });
 
