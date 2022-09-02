@@ -1,7 +1,7 @@
 // Consulta a localStorage
 const cartStorageGet = JSON.parse(localStorage.getItem("cart"));
 let cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
-
+// <input type="number" name="amount" min="1" max="100" step="1" value="${product.amount}">
 
 // Render html de productos del carrito de compras
 const cartToHtml = (product) => {
@@ -18,16 +18,15 @@ const cartToHtml = (product) => {
             $${product.price}
         </td>
         <td>
-            <input type="number" name="amount" id="amount-${product.cartId}" min="1" max="100" step="1" value="${product.amount}">
             <div class="stepper-input">
-                <input type="range" min="0" max="100" value="0">
+                <input type="range" min="0" max="100" value="${product.amount}" id="stepper-${product.cartId}">
                 <div class="input">
-                    <button class="minus-btn">-</button>
+                    <button class="minus-btn" id="minus-${product.cartId}">-</button>
                     <div class="range">
-                            <div class="list">
+                            <div class="list" id="stepper-list-${product.cartId}">   
                             </div>
                     </div>
-                    <button class="plus-btn">+</button>
+                    <button class="plus-btn" id="plus-${product.cartId}">+</button>
                 </div>
             </div>
         </td>
@@ -50,15 +49,18 @@ const showAllCart = () => {
 
     table.innerHTML = "";
 
-    if (cartStorageGet != null) {
+    if (cartStorageGet) {
         cartStorageGet.forEach(product => {
             table.innerHTML += cartToHtml(product);
-        });
-        eventsDeleteButton();
-    } else {
-        table.innerHTML = "<h5>Su carrito esta vacio</h5>"
-    }
 
+        });
+        eventsStepper();
+        eventsDeleteButton(); /* Eventos para eliminar producto */
+    }
+    if (cartStorageGet === null || cartStorageGet.length === 0) {
+        shoppingBag.setAttribute('data-after', 0);
+        table.innerHTML = "<h5>Su carrito esta vacio</h5>";
+    }
 }
 
 // Añade los EventListeners a los botones de eliminar del carrito 
@@ -100,7 +102,39 @@ const removeItem = (e) => {
     });
 
 }
+const eventsStepper = () => {
+    cartStorageGet.forEach(product => {
+        let stepper = document.getElementById(`stepper-${product.cartId}`);
+        let stepperMin = parseInt(stepper.getAttribute("min"));
+        let stepperMax = parseInt(stepper.getAttribute("max"));
+        let productAmountList = document.getElementById(`stepper-list-${product.cartId}`);
+        let minus = document.getElementById(`minus-${product.cartId}`);
+        let plus = document.getElementById(`plus-${product.cartId}`);
+        
+        for (let i = 0; i <= stepperMax; i++) {
+            productAmountList.innerHTML += `<span>${i}</span>`
+        }
+        productAmountList.style.marginTop = `-${stepper.value * 40}px`;
+        productAmountList.style.transition = `all 300ms ease-in-out`;
 
+        minus.addEventListener("click", () => {
+            let value = parseInt(stepper.getAttribute("value"));
+            if (value != stepperMin) {
+                value--;
+                stepper.setAttribute("value", value);
+                productAmountList.style.marginTop = `-${value * 40}px`;
+            }
+        });
 
+        plus.addEventListener("click", () => {
+            let value = parseInt(stepper.getAttribute("value"));
+            if (value != stepperMax) {
+                value++;
+                stepper.setAttribute("value", value);
+                productAmountList.style.marginTop = `-${value * 40}px`;
+            }
+        });
+    });
+}
 // Llamamos a la funcion que muestro los productos en pantalla
 showAllCart();

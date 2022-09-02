@@ -6,6 +6,7 @@
     width: 20rem;
     font-family: 'Open Sans', sans-serif;
     background-color: white;
+
     img {
         width: 100%;
     }
@@ -18,7 +19,8 @@
             justify-content: space-between;
             align-items: center;
             padding: .4rem;
-            .contador{
+
+            .contador {
                 border: 1px solid #3d3d3d;
             }
         }
@@ -29,10 +31,12 @@
             font-size: 14px;
             padding: 0 1rem;
         }
-        .precioCarrito{
+
+        .precioCarrito {
             font-weight: 600;
             font-size: 1rem;
         }
+
         h4,
         h3 {
             font-weight: bold;
@@ -63,6 +67,7 @@
     align-items: center;
     justify-content: center;
     transition: all 1s ease-in-out;
+
     p {
         color: #BEA88E;
         font-size: 1rem;
