@@ -19,6 +19,17 @@ const cartToHtml = (product) => {
         </td>
         <td>
             <input type="number" name="amount" id="amount-${product.cartId}" min="1" max="100" step="1" value="${product.amount}">
+            <div class="stepper-input">
+                <input type="range" min="0" max="100" value="0">
+                <div class="input">
+                    <button class="minus-btn">-</button>
+                    <div class="range">
+                            <div class="list">
+                            </div>
+                    </div>
+                    <button class="plus-btn">+</button>
+                </div>
+            </div>
         </td>
         <td>
             $${product.price * product.amount}
@@ -33,7 +44,7 @@ const cartToHtml = (product) => {
 // Muestra todos los productos del carrito de compras en pantalla
 const showAllCart = () => {
     const shoppingBag = document.querySelector('.fa-shopping-bag');
-    shoppingBag.setAttribute('data-after', cartCounterLocal); 
+    shoppingBag.setAttribute('data-after', cartCounterLocal);
 
     const table = document.getElementById('tableBody'); /* Contenedor de la tabla de productos */
 

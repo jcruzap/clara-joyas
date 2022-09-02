@@ -26,21 +26,58 @@
             th:nth-child(5) {
                 width: 10%;
             }
-
-            // th:nth-child(3) {
-            //     width: 10%;
-            // }
-            // th:nth-child(4) {
-            //     width: 10%;
-            // }
-            // th:nth-child(5) {
-            //     width: 10%;
-            // }
-
         }
         tbody{
             #contador{
                border: 1px solid black; 
+            }
+            .stepper-input{
+                /* position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%); */
+                width: 90px;
+                height: 40px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 40px;
+                box-shadow:  0 0 20px 5px rgba(0,0,0,0.05);
+                overflow: hidden;
+                input{
+                    display: none;
+                }
+                .input{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    button{
+                        width: 25px;
+                        height: 100%;
+                        border-radius: 10px;
+                        background: #fff;
+                        color: #222;
+                        font-size: 15px;
+                        cursor: pointer;
+                        border: none;
+                        transition: all 300ms ease-in-out;
+                        &:active{
+                            background: #555;
+                        }
+                    }
+                    .range {
+                        flex: 1;
+                        text-align: center;
+                        overflow: hidden;
+                        .list span{
+                            display: block;
+                            width: 100%;
+                            height: 40px;
+                            color: #222;
+                            font-size: 30px;
+                            line-height: 80px;
+                        }
+                    }
+                }
             }
         }
     }
