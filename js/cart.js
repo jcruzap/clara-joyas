@@ -30,7 +30,7 @@ const cartToHtml = (product) => {
                 </div>
             </div>
         </td>
-        <td>
+        <td id="price" class="animate__animated">
             $${product.price * product.amount}
         </td>
         <td>
@@ -104,33 +104,63 @@ const removeItem = (e) => {
 }
 const eventsStepper = () => {
     cartStorageGet.forEach(product => {
+        
+        /* *********************************************
+            Conjunto de atributos del contador stepper
+           ********************************************* */
+
         let stepper = document.getElementById(`stepper-${product.cartId}`);
         let stepperMin = parseInt(stepper.getAttribute("min"));
         let stepperMax = parseInt(stepper.getAttribute("max"));
         let productAmountList = document.getElementById(`stepper-list-${product.cartId}`);
         let minus = document.getElementById(`minus-${product.cartId}`);
         let plus = document.getElementById(`plus-${product.cartId}`);
-        
+
+        /* *********************************************
+           ********************************************* */
+         
+        let price = document.getElementById('price'); /* Columna de precio */
+
         for (let i = 0; i <= stepperMax; i++) {
             productAmountList.innerHTML += `<span>${i}</span>`
         }
         productAmountList.style.marginTop = `-${stepper.value * 40}px`;
         productAmountList.style.transition = `all 300ms ease-in-out`;
 
+        /* Descuenta 1 al contador */
+        /* Actualiza en localstorage */
         minus.addEventListener("click", () => {
             let value = parseInt(stepper.getAttribute("value"));
             if (value != stepperMin) {
                 value--;
                 stepper.setAttribute("value", value);
+                price.innerHTML = ""
+                price.innerHTML += `$${product.price * value}`
+                price.classList.add('animate__fadeIn');
+                setTimeout(() => {
+                    price.classList.remove('animate__fadeIn');
+                }, 500);
+                product.amount = value
+                localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
             }
         });
 
+        /* Incrementa 1 al contador */
+        /* Actualiza tambien en localstorage */
         plus.addEventListener("click", () => {
             let value = parseInt(stepper.getAttribute("value"));
             if (value != stepperMax) {
                 value++;
                 stepper.setAttribute("value", value);
+                price.innerHTML = ""
+                price.innerHTML += `$${product.price * value}`
+                price.classList.add('animate__fadeIn');
+                setTimeout(() => {
+                    price.classList.remove('animate__fadeIn');
+                }, 500);
+                product.amount = value
+                localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
             }
         });
