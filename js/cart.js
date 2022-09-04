@@ -67,13 +67,16 @@ const showAllCart = () => {
 const eventsDeleteButton = () => {
     cartStorageGet.forEach(product => {
         let removeButton = document.getElementById(product.cartId);
-        removeButton.addEventListener("click", removeItem);
+        let deleteId = parseInt(removeButton.getAttribute('id'));
+        removeButton.addEventListener("click", () => {
+            removeItem(deleteId);
+        });
     });
 }
 
 // Eliminar el producto del carrito
-const removeItem = (e) => {
-    const removeButtonId = parseInt(e.target.id); /* Obtengo el id del boton clickeado */
+const removeItem = (deleteId) => {
+    /* almacena index a eliminar */
     let dataIndex;
 
     cartStorageGet.forEach((product, index) => {
@@ -89,7 +92,7 @@ const removeItem = (e) => {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                if (removeButtonId === product.cartId) {
+                if (deleteId === product.cartId) {
                     dataIndex = index;
                 }
                 cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
@@ -102,6 +105,7 @@ const removeItem = (e) => {
     });
 
 }
+// Contador que aumenta o disminuye la cantidad de productos de 1 en 1
 const eventsStepper = () => {
     cartStorageGet.forEach(product => {
         
@@ -143,6 +147,9 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
+            }
+            if(value === 0){
+                removeItem(product.cartId);
             }
         });
 
