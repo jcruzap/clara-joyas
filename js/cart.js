@@ -30,7 +30,7 @@ const cartToHtml = (product) => {
                 </div>
             </div>
         </td>
-        <td id="price" class="animate__animated">
+        <td id="price-${product.cartId}" class="animate__animated">
             $${product.price * product.amount}
         </td>
         <td>
@@ -123,7 +123,7 @@ const eventsStepper = () => {
         /* *********************************************
            ********************************************* */
          
-        let price = document.getElementById('price'); /* Columna de precio */
+        let price = document.getElementById(`price-${product.cartId}`); /* Columna de precio */
 
         for (let i = 0; i <= stepperMax; i++) {
             productAmountList.innerHTML += `<span>${i}</span>`
@@ -160,12 +160,12 @@ const eventsStepper = () => {
             if (value != stepperMax) {
                 value++;
                 stepper.setAttribute("value", value);
-                price.innerHTML = ""
-                price.innerHTML += `$${product.price * value}`
                 price.classList.add('animate__fadeIn');
                 setTimeout(() => {
                     price.classList.remove('animate__fadeIn');
                 }, 500);
+                price.innerHTML = ""
+                price.innerHTML += `$${product.price * value}`
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
