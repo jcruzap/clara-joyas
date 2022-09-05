@@ -41,33 +41,38 @@ const cartToHtml = (product) => {
 }
 
 // Muestra todos los productos en pantalla
-const showAllProducts = () => {
+const showAllProducts = async () => {
     const productsContainer = document.getElementById('products'); /* Contenedor de productos */
-    productsContainer.innerHTML = "";
+    productsContainer.innerHTML = ""
 
-    products.forEach(product => {
-        productsContainer.innerHTML += productsToHtml(product);
-    });
-    eventsAddButton();
+    /* Obtenemos los datos de los productos desde products.json utilizando fetch */
+    const response = await fetch('../js/products.json')
+    const data = await response.json();
+    data.forEach((product) => {
+        productsContainer.innerHTML += productsToHtml(product); /* Render */
+    })
+    ;
+    eventsAddButton(data); /* Enviamos los datos por parametro */
 }
 
 // Añade los EventListeners a los botones de añadir al carrito 
-const eventsAddButton = () => {
-    products.forEach(product => {
+const eventsAddButton = (data) => {
+    data.forEach(product => {
         let addToCartButton = document.getElementById(product.id); /* Boton añadir al carrito */
-        addToCartButton.addEventListener("click", addItem);
+        let buttonId = parseInt(addToCartButton.getAttribute('id'));
+        addToCartButton.addEventListener("click", () => {
+            addItem(data,buttonId);
+        });
     });
 }
 
 // Selecciona el producto para añdir al carrito
-const addItem = (e) => {
-    const button = e.target;
-    let addButtonId = parseInt(button.getAttribute('id')); /* Obtengo ID del boton clickeado */
+const addItem = (data,buttonId) => {
     let cartItem;
     let cartLength = cart.length;
-    products.forEach(product => {
+    data.forEach(product => {
         /* Seleccionamos el producto que coincida con el ID obtenido */
-        if (product.id === addButtonId) {
+        if (product.id === buttonId) {
             /* 
             -Con esta logica evitamos repetir el renderizado
             de un producto en el carrito y solo incrementamos su cantidad.

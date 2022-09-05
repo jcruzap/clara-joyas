@@ -34,7 +34,7 @@ const cartToHtml = (product) => {
             $${product.price * product.amount}
         </td>
         <td>
-            <button class="btn btn-danger" id="${product.cartId}">Eliminar</button>
+            <button class="btn btn-danger" id="${product.cartId}"><i class="fas fa-trash-alt"></i></button>
         </td>
     </tr>
     `
