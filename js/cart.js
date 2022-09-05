@@ -69,7 +69,22 @@ const eventsDeleteButton = () => {
         let removeButton = document.getElementById(product.cartId);
         let deleteId = parseInt(removeButton.getAttribute('id'));
         removeButton.addEventListener("click", () => {
-            removeItem(deleteId);
+            /* Custom modal sweet alert */
+            Swal.fire({
+                title: 'Esta seguro?',
+                text: "Esta accion eliminará un producto del carrito.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    removeItem(deleteId);
+                }
+            });
+
         });
     });
 }
@@ -80,35 +95,23 @@ const removeItem = (deleteId) => {
     let dataIndex;
 
     cartStorageGet.forEach((product, index) => {
-        // Sweet Alert custom modal con validacion de resultado
-        Swal.fire({
-            title: 'Esta seguro?',
-            text: "Esta accion eliminar un producto del carrito!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar!',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                if (deleteId === product.cartId) {
-                    dataIndex = index;
-                }
-                cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
-                localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
-                cartCounterLocal--;
-                localStorage.setItem("cart-counter", JSON.stringify(cartCounterLocal));
-                showAllCart(); /* Muestra el nuevo carrito en pantalla */
-            }
-        });
+        // Busca el producto en la lista que corresponda con el id obtenido
+        if (deleteId === product.cartId) {
+            dataIndex = index;
+        }
+        cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
+        localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
+        cartCounterLocal--;
+        localStorage.setItem("cart-counter", JSON.stringify(cartCounterLocal));
+        showAllCart(); /* Muestra el nuevo carrito en pantalla */
+
     });
 
 }
 // Contador que aumenta o disminuye la cantidad de productos de 1 en 1
 const eventsStepper = () => {
     cartStorageGet.forEach(product => {
-        
+
         /* *********************************************
             Conjunto de atributos del contador stepper
            ********************************************* */
@@ -121,8 +124,8 @@ const eventsStepper = () => {
         let plus = document.getElementById(`plus-${product.cartId}`);
 
         /* *********************************************
-           ********************************************* */
-         
+         ********************************************* */
+
         let price = document.getElementById(`price-${product.cartId}`); /* Columna de precio */
 
         for (let i = 0; i <= stepperMax; i++) {
@@ -147,9 +150,52 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
+                /* Custom toast */
+                Toastify({
+                    duration: 1000,
+                    text: "Carrito actualizado",
+                    offset: {
+                        x: 50,
+                        y: 150
+                    },
+                    style: {
+                        background: "#98ab42"
+                    },
+                }).showToast();
             }
-            if(value === 0){
-                removeItem(product.cartId);
+            if (value === 0) {
+                /* Custom modal sweet alert */
+                Swal.fire({
+                    title: 'Esta seguro?',
+                    text: "Esta accion eliminará un producto del carrito.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, eliminar!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        removeItem(product.cartId);
+                    } else {
+                        product.amount = 1
+                        localStorage.setItem("cart", JSON.stringify(cartStorageGet));
+                        showAllCart();
+                        /* Custom toast */
+                        Toastify({
+                            duration: 1000,
+                            text: "Carrito actualizado",
+                            offset: {
+                                x: 50,
+                                y: 150
+                            },
+                            style: {
+                                background: "#98ab42"
+                            },
+                        }).showToast();
+                    }
+                });
+
             }
         });
 
@@ -169,6 +215,18 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
+                /* Custom toast */
+                Toastify({
+                    duration: 1000,
+                    text: "Carrito actualizado",
+                    offset: {
+                        x: 50,
+                        y: 150
+                    },
+                    style: {
+                        background: "#98ab42"
+                    },
+                }).showToast();
             }
         });
     });
