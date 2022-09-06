@@ -34,7 +34,7 @@ const cartToHtml = (product) => {
             $${product.price * product.amount}
         </td>
         <td>
-            <button class="btn btn-danger" id="${product.cartId}"><i class="fas fa-trash-alt"></i></button>
+            <button class="btn btn-danger" id="${product.cartId}">Eliminar <i class="fas fa-trash-alt"></i></i></button>
         </td>
     </tr>
     `
@@ -52,10 +52,9 @@ const showAllCart = () => {
     if (cartStorageGet) {
         cartStorageGet.forEach(product => {
             table.innerHTML += cartToHtml(product);
-
         });
         eventsStepper();
-        eventsDeleteButton(); /* Eventos para eliminar producto */
+        eventsDeleteButton();
     }
     if (cartStorageGet === null || cartStorageGet.length === 0) {
         shoppingBag.setAttribute('data-after', 0);
@@ -66,7 +65,7 @@ const showAllCart = () => {
 // Añade los EventListeners a los botones de eliminar del carrito 
 const eventsDeleteButton = () => {
     cartStorageGet.forEach(product => {
-        let removeButton = document.getElementById(product.cartId);
+        let removeButton = document.getElementById(`${product.cartId}`);
         let deleteId = parseInt(removeButton.getAttribute('id'));
         removeButton.addEventListener("click", () => {
             /* Custom modal sweet alert */
@@ -84,28 +83,25 @@ const eventsDeleteButton = () => {
                     removeItem(deleteId);
                 }
             });
-
+            
         });
     });
 }
 
 // Eliminar el producto del carrito
-const removeItem = (deleteId) => {
-    /* almacena index a eliminar */
-    let dataIndex;
-
+const removeItem = (id) => {
+    let dataIndex; /* almacena index a eliminar */
     cartStorageGet.forEach((product, index) => {
         // Busca el producto en la lista que corresponda con el id obtenido
-        if (deleteId === product.cartId) {
+        if (id === product.cartId) {
             dataIndex = index;
+            cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
+            localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
+            cartCounterLocal--;
+            localStorage.setItem("cart-counter", JSON.stringify(cartCounterLocal));
         }
-        cartStorageGet.splice(dataIndex, 1); /* Elimina del arreglo */
-        localStorage.setItem("cart", JSON.stringify(cartStorageGet)); /* Guarda nuevamente en local storage */
-        cartCounterLocal--;
-        localStorage.setItem("cart-counter", JSON.stringify(cartCounterLocal));
-        showAllCart(); /* Muestra el nuevo carrito en pantalla */
-
     });
+    showAllCart(); /* Muestra el nuevo carrito en pantalla */
 
 }
 // Contador que aumenta o disminuye la cantidad de productos de 1 en 1
@@ -150,18 +146,6 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
-                /* Custom toast */
-                Toastify({
-                    duration: 1000,
-                    text: "Carrito actualizado",
-                    offset: {
-                        x: 50,
-                        y: 150
-                    },
-                    style: {
-                        background: "#98ab42"
-                    },
-                }).showToast();
             }
             if (value === 0) {
                 /* Custom modal sweet alert */
@@ -181,18 +165,6 @@ const eventsStepper = () => {
                         product.amount = 1
                         localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                         showAllCart();
-                        /* Custom toast */
-                        Toastify({
-                            duration: 1000,
-                            text: "Carrito actualizado",
-                            offset: {
-                                x: 50,
-                                y: 150
-                            },
-                            style: {
-                                background: "#98ab42"
-                            },
-                        }).showToast();
                     }
                 });
 
@@ -215,18 +187,6 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
-                /* Custom toast */
-                Toastify({
-                    duration: 1000,
-                    text: "Carrito actualizado",
-                    offset: {
-                        x: 50,
-                        y: 150
-                    },
-                    style: {
-                        background: "#98ab42"
-                    },
-                }).showToast();
             }
         });
     });
