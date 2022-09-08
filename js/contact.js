@@ -19,11 +19,14 @@ let reason = document.getElementById('reason');
 let message = document.getElementById('message');
 
 const form = document.getElementById('form'); /* captura del formulario */
+
+let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+
 /* Añadimos el evento submit */
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (firstName.value == "" || last.value == "" || email.value == "" || message.value == "") {
-        alert("Complete los campos");
+        
     } else {
         sendEmail(firstName.value, last.value, email.value, message.value);
     }  

@@ -1,6 +1,5 @@
 .botones {
     color: white !important;
-    text-decoration: none;
     text-align: center;
     padding: .5rem;
     border-radius: 5px;
@@ -11,14 +10,24 @@
 
     &:hover {
         background-color: lighten($color: #151D1B, $amount: 20);
-        transition: .5s;
+        transition: all .5s ease-in;
     }
 }
 
 .comprar {
+    background: none;
+    font-style: italic;
+    font-size: 1.2rem;
+    &:hover {
+        background-color: lighten($color: #98ab42, $amount: 10);
+        text-decoration: none;
+        // transition: all .5s ease-in;
+    }
+}
+.seguirComprando{
     background-color: #98ab42;
     &:hover {
         background-color: lighten($color: #98ab42, $amount: 10);
-        transition: .5s;
+        // transition: all .5s ease-in;
     }
 }

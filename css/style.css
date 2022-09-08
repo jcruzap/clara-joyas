@@ -132,7 +132,6 @@
 /* Componentes */
 .botones {
   color: white !important;
-  text-decoration: none;
   text-align: center;
   padding: .5rem;
   border-radius: 5px;
@@ -142,13 +141,20 @@
   cursor: pointer; }
   .botones:hover {
     background-color: #405852;
-    transition: .5s; }
+    transition: all .5s ease-in; }
 
 .comprar {
-  background-color: #98ab42; }
+  background: none;
+  font-style: italic;
+  font-size: 1.2rem; }
   .comprar:hover {
     background-color: #afc15f;
-    transition: .5s; }
+    text-decoration: none; }
+
+.seguirComprando {
+  background-color: #98ab42; }
+  .seguirComprando:hover {
+    background-color: #afc15f; }
 
 .carousel {
   margin: 3rem auto; }
@@ -369,20 +375,15 @@
   background-position-y: 65%;
   height: 550px; }
 
+#offcanvasExample {
+  min-width: 500px; }
+
 .offcanvas .offcanvas-body #cartList {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   color: black; }
-  .offcanvas .offcanvas-body #cartList .cartListVacio {
-    color: white; }
-
-.offcanvas .verCarrito {
-  max-width: 20rem;
-  margin: 2rem auto;
-  display: flex;
-  justify-content: flex-end; }
 
 .productos {
   display: grid;
@@ -390,7 +391,7 @@
   row-gap: 2rem;
   justify-items: center;
   width: 60vw;
-  margin: 2rem auto; }
+  margin: 4rem auto; }
 
 /* Galeria */
 #bannerGaleria {
@@ -630,10 +631,6 @@
     .carrito .carritoTabla tbody #contador {
       border: 1px solid black; }
     .carrito .carritoTabla tbody .stepper-input {
-      /* position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%); */
       width: 90px;
       height: 40px;
       background-color: #fff;

@@ -13,7 +13,9 @@
     height: 550px;
 }
 
-
+#offcanvasExample{
+    min-width: 500px;
+}
 .offcanvas {
     .offcanvas-body {
         #cartList {
@@ -26,20 +28,8 @@
             .producto {
                 @extend %producto;
             }
-
-            .cartListVacio {
-                color: white;
-            }
         }
     }
-
-    .verCarrito {
-        max-width: 20rem;
-        margin: 2rem auto;
-        display: flex;
-        justify-content: flex-end;
-    }
-
 }
 
 .productos {
@@ -49,7 +39,7 @@
     row-gap: 2rem;
     justify-items: center;
     width: 60vw;
-    margin: 2rem auto;
+    margin: 4rem auto;
 
     .producto {
         @extend %producto;

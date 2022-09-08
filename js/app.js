@@ -50,8 +50,7 @@ const showAllProducts = async () => {
     const data = await response.json();
     data.forEach((product) => {
         productsContainer.innerHTML += productsToHtml(product); /* Render */
-    })
-    ;
+    });
     eventsAddButton(data); /* Enviamos los datos por parametro */
 }
 
@@ -61,24 +60,24 @@ const eventsAddButton = (data) => {
         let addToCartButton = document.getElementById(product.id); /* Boton añadir al carrito */
         let buttonId = parseInt(addToCartButton.getAttribute('id'));
         addToCartButton.addEventListener("click", () => {
-            addItem(data,buttonId);
+            addItem(data, buttonId);
         });
     });
 }
 
 // Selecciona el producto para añdir al carrito
-const addItem = (data,buttonId) => {
+const addItem = (data, buttonId) => {
     let cartItem;
     let cartLength = cart.length;
     data.forEach(product => {
         /* Seleccionamos el producto que coincida con el ID obtenido */
         if (product.id === buttonId) {
             /* 
-            -Con esta logica evitamos repetir el renderizado
-            de un producto en el carrito y solo incrementamos su cantidad.
-            *************************************************************
-            -Si el producto no se repite entonces lo sumamos al carrito
-            como un nuevo item.
+                #Con esta logica evitamos repetir el renderizado
+                de un producto en el carrito y solo incrementamos su cantidad.
+                *************************************************************
+                #Si el producto no se repite entonces lo sumamos al carrito
+                como un nuevo item.
             */
             if (cartLength) {
                 for (let i = 0; i < cartLength; i++) {
@@ -128,32 +127,46 @@ const addItemToCart = (cartItem) => {
     setTimeout(() => {
         cartButton.classList.remove('animate__shakeX');
         shoppingBag.setAttribute('data-after', cartCounter);
-    },500)
+    }, 500)
     
     // Sweet alert custom modal
     Swal.fire({
-        title: 'Producto añadido con éxito al carrito',
-        icon: 'success',
-        showCloseButton: true,
-        showCancelButton: true,
-        focusConfirm: false,
-        confirmButtonColor: '#98ab42',
-        cancelButtonColor: '#151D1B',
-        confirmButtonText: '<a href="./carrito-compras.html" class="botones comprar"><i class="fas fa-shopping-cart"></i> Ver carrito</a>',
-        cancelButtonText: 'Seguir comprando',
+        title: 'Producto añadido con éxito!',
+        html: '<button class="botones" type="button" id="closeSweet" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Ver carrito <i class="fas fa-shopping-cart"></i></button> <button type="button" id="closeSweet" class="botones seguirComprando">Seguir comprando</button>',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        showConfirmButton: false
     });
 
+    /* 
+        #Añadimos escucha de evento click en dos botones que cierran el custom sweet alert.
+        #El boton "Ver carrito" lo cierra y muestra el carrito lateral.
+        #El boton "Seguir comprando" solo lo cierra para poder seguir comprando.
+    */
+
+    const closeSweet = document.querySelectorAll('#closeSweet');
+    closeSweet.forEach((sw) => {
+        sw.addEventListener("click" , () => {
+            Swal.close();
+        });
+    });
+    
     cart.push(cartItem); /* Guarda en arreglo */
     storageSet("cart", cart); /* Guarda en local storage */
     showAllCart();
 }
+
+// Renderiza todos los productos en el offcanvas 
 const showAllCart = () => {
     const cartList = document.getElementById('cartList');
     cartList.innerHTML = "";
     cart.forEach(product => {
         cartList.innerHTML += cartToHtml(product);
     });
-
 }
 // Guardar carrito en local storage
 const storageSet = (key, value) => {
