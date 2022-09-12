@@ -23,20 +23,14 @@ const message = document.getElementById('message');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     validateInputs();
-    // if (firstName == "" || lastName == "" || email == "" || message == "") {
-    //     Swal.fire('Debes completar los campos.');
-    // } else {
-
-    // }
 });
 const setErrorMessages = (errors) => {
-   const errorDisplay = document.getElementById('alert');
-//    console.log(errors);
-   errorDisplay.innerHTML = ""
-   errorDisplay.classList.remove('hidden');
-   errors.forEach(err => { 
+    const errorDisplay = document.getElementById('alert');
+    errorDisplay.innerHTML = ""
+    errorDisplay.classList.remove('hidden');
+    errors.forEach(err => {
         errorDisplay.innerHTML += `<li class="errors"><i class="fas fa-exclamation-circle"></i> ${err}</li>`
-   });
+    });
 }
 
 const isInvalidEmail = (email) => {
@@ -45,35 +39,54 @@ const isInvalidEmail = (email) => {
 }
 const validateInputs = () => {
     let errors = []
-    const firstNameValue = firstName.value.trim();
-    const lastNameValue = lastName.value.trim();
-    const emailValue = email.value.trim();
-    const messageValue = message.value.trim();
+    let firstNameValue = firstName.value.trim();
+    let lastNameValue = lastName.value.trim();
+    let emailValue = email.value.trim();
+    let messageValue = message.value.trim();
 
-    if(firstNameValue === ''){
+    if (firstNameValue === '') {
         errors.push('Tu Nombre es obligatorio');
-    }else if(firstNameValue.length < 3){
+    } else if (firstNameValue.length < 3) {
         errors.push('Tu Nombre debe contener al menos 3 caracteres');
     }
-    if(lastNameValue === ''){
+    if (lastNameValue === '') {
         errors.push('Tu Apellido es obligatorio');
-    }else if(lastNameValue.length < 3){
+    } else if (lastNameValue.length < 3) {
         errors.push('Tu Apellido debe contener al menos 3 caracteres');
     }
-    if(emailValue === ''){
+    if (emailValue === '') {
         errors.push('Tu Email es obligatorio');
-    }else if(!isInvalidEmail(emailValue)) {
+    } else if (!isInvalidEmail(emailValue)) {
         errors.push('Email invalido');
     }
-    if(errors.length != 0){
+    if (messageValue === '') {
+        errors.push('Debes completar un mensaje');
+    } else if (messageValue.length < 25) {
+        errors.push('Tu mensaje debe contener al menos 25 caracteres');
+    }
+    if (errors.length != 0) {
         setErrorMessages(errors);
-    }else if(errors.length === 0){
-        console.log("sin errores");
-    }  
+    } else if (errors.length === 0) {
+        sendEmail(firstNameValue, lastNameValue, emailValue, messageValue);
+        firstName.value = ""
+        lastName.value = ""
+        email.value = ""
+        message.value = ""
+
+    }
 }
 
 
 const sendEmail = (name, last, email, message) => {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Mensaje enviado con éxito!',
+        html: '<p><strong>Su consulta sera respondida a la brevedad</strong></p>',
+        showConfirmButton: false,
+        timer: 1500
+    })
+
     const sendData = {
         service_id: serviceID,
         template_id: templateID,
@@ -95,8 +108,8 @@ const sendEmail = (name, last, email, message) => {
             }
         })
         .then((response) => response)
-        .then((json) => console.log(json))
-        .catch((error) => console.log(error));
+        .then((json) => console.log(`Correo enviado... status: ${json.status}`))
+        .catch((error) => console.log(`El correo no se pudo enviar. Error: ${error}`));
 }
 
 // let select = document.getElementById('reason-select');

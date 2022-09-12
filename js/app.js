@@ -163,10 +163,16 @@ const addItemToCart = (cartItem) => {
 // Renderiza todos los productos en el offcanvas 
 const showAllCart = () => {
     const cartList = document.getElementById('cartList');
+    const subTotal = document.getElementById('cartSubTotal');
+    let total = 0;
+    subTotal.innerHTML = "";
     cartList.innerHTML = "";
     cart.forEach(product => {
+        total = total + (product.price * product.amount);
+        
         cartList.innerHTML += cartToHtml(product);
     });
+    subTotal.innerHTML = total;
 }
 // Guardar carrito en local storage
 const storageSet = (key, value) => {

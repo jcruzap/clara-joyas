@@ -378,6 +378,14 @@
 #offcanvasExample {
   min-width: 500px; }
 
+.offcanvas .subtotal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1rem; }
+  .offcanvas .subtotal h4, .offcanvas .subtotal span {
+    margin: 0; }
+
 .offcanvas .offcanvas-body #cartList {
   display: flex;
   flex-direction: column;

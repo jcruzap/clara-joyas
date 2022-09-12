@@ -17,6 +17,15 @@
     min-width: 500px;
 }
 .offcanvas {
+    .subtotal{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 1rem;
+        h4,span{
+            margin: 0;
+        }
+    }
     .offcanvas-body {
         #cartList {
             display: flex;
