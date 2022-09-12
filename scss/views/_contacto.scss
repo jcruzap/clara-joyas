@@ -2,11 +2,13 @@
     display: grid;
     grid-template-rows: auto 1fr;
     padding: 2rem 0;
+
     .seccionFormulario,
     .horariosUbicacion,
     .contactoTitulos {
         width: 50vw;
     }
+
     .contactoTitulos {
         margin: 2rem auto;
 
@@ -39,6 +41,14 @@
     }
 
     .seccionFormulario {
+        .hidden{
+            display: none;
+        }
+        .alert{
+            .errors{
+                list-style: none;
+            }
+        }
         .formulario {
             .flexRow {
                 display: flex;
@@ -49,7 +59,9 @@
 
             input[type=text],
             input[type=email],
-            textarea ,select, select option{
+            textarea,
+            select,
+            select option {
                 padding-bottom: .5rem;
                 outline: none;
                 border-bottom: solid 2px #ccc;
@@ -59,13 +71,15 @@
             }
 
             input[type=text],
-            input[type=email],select {
+            input[type=email],
+            select {
                 width: 50%;
             }
 
             input[type=text]:focus,
             input[type=email]:focus,
-            textarea:focus ,select:focus{
+            textarea:focus,
+            select:focus {
                 transition: 2s;
                 border-bottom: solid 2px #151D1B;
             }
@@ -74,7 +88,7 @@
             .motivo {
                 margin-left: 1rem;
             }
-            
+
             textarea {
                 resize: none;
                 width: 100%;
@@ -108,10 +122,12 @@
                 font-weight: bold;
             }
         }
-        .mapa{
+
+        .mapa {
             filter: grayscale(.5);
             transition: 1s;
-            &:hover{
+
+            &:hover {
                 filter: grayscale(0);
             }
         }

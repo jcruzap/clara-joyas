@@ -558,6 +558,10 @@
     padding: 2rem;
     border-radius: 10px;
     border: 3px solid #bea88e; }
+  .contenedorGeneral .seccionFormulario .hidden {
+    display: none; }
+  .contenedorGeneral .seccionFormulario .alert .errors {
+    list-style: none; }
   .contenedorGeneral .seccionFormulario .formulario {
     width: 100%; }
     .contenedorGeneral .seccionFormulario .formulario .flexRow {
@@ -565,7 +569,9 @@
       flex-direction: row; }
     .contenedorGeneral .seccionFormulario .formulario input[type=text],
     .contenedorGeneral .seccionFormulario .formulario input[type=email],
-    .contenedorGeneral .seccionFormulario .formulario textarea, .contenedorGeneral .seccionFormulario .formulario select, .contenedorGeneral .seccionFormulario .formulario select option {
+    .contenedorGeneral .seccionFormulario .formulario textarea,
+    .contenedorGeneral .seccionFormulario .formulario select,
+    .contenedorGeneral .seccionFormulario .formulario select option {
       padding-bottom: .5rem;
       outline: none;
       border-bottom: solid 2px #ccc;
@@ -573,11 +579,13 @@
       font-family: 'Maven Pro', sans-serif;
       margin-bottom: 2rem; }
     .contenedorGeneral .seccionFormulario .formulario input[type=text],
-    .contenedorGeneral .seccionFormulario .formulario input[type=email], .contenedorGeneral .seccionFormulario .formulario select {
+    .contenedorGeneral .seccionFormulario .formulario input[type=email],
+    .contenedorGeneral .seccionFormulario .formulario select {
       width: 50%; }
     .contenedorGeneral .seccionFormulario .formulario input[type=text]:focus,
     .contenedorGeneral .seccionFormulario .formulario input[type=email]:focus,
-    .contenedorGeneral .seccionFormulario .formulario textarea:focus, .contenedorGeneral .seccionFormulario .formulario select:focus {
+    .contenedorGeneral .seccionFormulario .formulario textarea:focus,
+    .contenedorGeneral .seccionFormulario .formulario select:focus {
       transition: 2s;
       border-bottom: solid 2px #151D1B; }
     .contenedorGeneral .seccionFormulario .formulario .apellido,

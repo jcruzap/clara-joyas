@@ -11,26 +11,67 @@ const {
     API_URL: url
 } = emailjs_data
 
-/* Datos ingresados en el formulario */
-let firstName = document.getElementById('name');
-let last = document.getElementById('last_name');
-let email = document.getElementById('email');
-let reason = document.getElementById('reason');
-let message = document.getElementById('message');
-
-const form = document.getElementById('form'); /* captura del formulario */
-
-let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+/* Form */
+const form = document.getElementById('form');
+/* Inputs del form */
+const firstName = document.getElementById('name');
+const lastName = document.getElementById('last_name');
+const email = document.getElementById('email');
+const message = document.getElementById('message');
 
 /* Añadimos el evento submit */
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (firstName.value == "" || last.value == "" || email.value == "" || message.value == "") {
-        
-    } else {
-        sendEmail(firstName.value, last.value, email.value, message.value);
+    validateInputs();
+    // if (firstName == "" || lastName == "" || email == "" || message == "") {
+    //     Swal.fire('Debes completar los campos.');
+    // } else {
+
+    // }
+});
+const setErrorMessages = (errors) => {
+   const errorDisplay = document.getElementById('alert');
+//    console.log(errors);
+   errorDisplay.innerHTML = ""
+   errorDisplay.classList.remove('hidden');
+   errors.forEach(err => { 
+        errorDisplay.innerHTML += `<li class="errors"><i class="fas fa-exclamation-circle"></i> ${err}</li>`
+   });
+}
+
+const isInvalidEmail = (email) => {
+    const regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+    return regExp.test(String(email).toLowerCase());
+}
+const validateInputs = () => {
+    let errors = []
+    const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim();
+    const emailValue = email.value.trim();
+    const messageValue = message.value.trim();
+
+    if(firstNameValue === ''){
+        errors.push('Tu Nombre es obligatorio');
+    }else if(firstNameValue.length < 3){
+        errors.push('Tu Nombre debe contener al menos 3 caracteres');
+    }
+    if(lastNameValue === ''){
+        errors.push('Tu Apellido es obligatorio');
+    }else if(lastNameValue.length < 3){
+        errors.push('Tu Apellido debe contener al menos 3 caracteres');
+    }
+    if(emailValue === ''){
+        errors.push('Tu Email es obligatorio');
+    }else if(!isInvalidEmail(emailValue)) {
+        errors.push('Email invalido');
+    }
+    if(errors.length != 0){
+        setErrorMessages(errors);
+    }else if(errors.length === 0){
+        console.log("sin errores");
     }  
-})
+}
+
 
 const sendEmail = (name, last, email, message) => {
     const sendData = {
@@ -46,14 +87,16 @@ const sendEmail = (name, last, email, message) => {
         },
 
     }
-    fetch(url,{
-        method: 'POST',
-        body: JSON.stringify(sendData),
-        headers: {"Content-type": "application/json;charset=UTF-8"}
-    })
-    .then((response) => response)
-    .then((json) => console.log(json))
-    .catch((error) => console.log(error));
+    fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(sendData),
+            headers: {
+                "Content-type": "application/json;charset=UTF-8"
+            }
+        })
+        .then((response) => response)
+        .then((json) => console.log(json))
+        .catch((error) => console.log(error));
 }
 
 // let select = document.getElementById('reason-select');

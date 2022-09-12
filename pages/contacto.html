@@ -71,17 +71,26 @@
                 <h3>Envie su consulta desde aquí</h3>
                 <p>Queremos escucharte y poder darte la mejor solución</p>
             </div>
+            
             <div class="seccionFormulario">
+                <div class="alert alert-danger hidden" role="alert" id="alert">
+                </div>
                 <form id="form" class="formulario">
+
                     <div class="flexRow">
+
                         <label for="name"></label>
                         <input type="text" name="name" id="name" placeholder="Nombre">
+
                         <label for="last"></label>
                         <input type="text" name="last" id="last_name" placeholder="Apellido" class="apellido">
+
                     </div>
                     <div class="flexRow">
+
                         <label for="email"></label>
-                        <input type="email" name="email" id="email" placeholder="Correo electronico">
+                        <input type="text" name="email" id="email" placeholder="Correo electronico">
+
                         <label for="reason"></label>
                         <select name="reason" id="reason-select" class="motivo">
                             <option value="" class="opcionItem">Seleccione una opcion</option>
@@ -91,10 +100,12 @@
                         </select>
                         <!-- <input type="text" name="reason" placeholder="Motivo de consulta" class="motivo"> -->
                     </div>
+
                     <label for="message"></label>
                     <textarea name="message" id="message" cols="30" rows="10"
                         placeholder="Escriba aqui su consulta..."></textarea>
                     <button type="submit" class="botones">Enviar</button>
+
                 </form>
             </div>
             <div class="contactoTitulos">
@@ -159,7 +170,8 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+    <!-- Sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/contact.js"></script>
 </body>
 
