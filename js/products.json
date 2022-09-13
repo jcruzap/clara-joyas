@@ -25,4 +25,39 @@
     "description": "Mueble bajo mesada con tres puertas. No incluye mesada.",
     "price": 17600,
     "img": "producto4.jpg"
+}, 
+{
+    "id": 5,
+    "name": "Sillones y ratona",
+    "description": "Juego de sillones y mesita ratona mas que ideal para decorar tu jardin o patio.",
+    "price": 22000,
+    "img": "producto5.jpg"
+}, 
+{
+    "id": 6,
+    "name": "Ropero XL",
+    "description": "Ropero tamaño XL con mucho espacio para guardar toda tu ropa.",
+    "price": 35760,
+    "img": "producto6.jpg"
+}, 
+{
+    "id": 7,
+    "name": "Jugetero kids",
+    "description": "Organizador de jugetes con cajones retraibles. No incluye juegos.",
+    "price": 19700,
+    "img": "producto7.jpg"
+}, 
+{
+    "id": 8,
+    "name": "Mesada granito",
+    "description": "Mesada granito color gris con bacha integrada. No incluye mueble.",
+    "price": 20800,
+    "img": "producto8.jpg"
+}, 
+{
+    "id": 9,
+    "name": "Juego rustico c/sillas",
+    "description": "Mueble bajo mesada con tres puertas. No incluye mesada.",
+    "price": 55900,
+    "img": "producto9.jpg"
 }]

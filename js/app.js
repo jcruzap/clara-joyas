@@ -73,10 +73,10 @@ const addItem = (data, buttonId) => {
         /* Seleccionamos el producto que coincida con el ID obtenido */
         if (product.id === buttonId) {
             /* 
-                #Con esta logica evitamos repetir el renderizado
+                *Con esta logica evitamos repetir el renderizado
                 de un producto en el carrito y solo incrementamos su cantidad.
-                *************************************************************
-                #Si el producto no se repite entonces lo sumamos al carrito
+                
+                *Si el producto no se repite entonces lo sumamos al carrito
                 como un nuevo item.
             */
             if (cartLength) {
@@ -143,9 +143,9 @@ const addItemToCart = (cartItem) => {
     });
 
     /* 
-        #Añadimos escucha de evento click en dos botones que cierran el custom sweet alert.
-        #El boton "Ver carrito" lo cierra y muestra el carrito lateral.
-        #El boton "Seguir comprando" solo lo cierra para poder seguir comprando.
+        *Añadimos escucha de evento click en dos botones que cierran el custom sweet alert.
+        *El boton "Ver carrito" lo cierra y muestra el carrito lateral.
+        *El boton "Seguir comprando" solo lo cierra para poder seguir comprando.
     */
 
     const closeSweet = document.querySelectorAll('#closeSweet');

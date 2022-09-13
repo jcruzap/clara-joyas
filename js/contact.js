@@ -1,9 +1,11 @@
+/* Informacion obtenida de email JS */
 const emailjs_data = {
     SERVICE_ID: "service_nzwa1y5",
     TEMPLATE_ID: "template_4xiqyc9",
     PUBLIC_KEY: "PRk_FspI8BLnJ9cwl",
     API_URL: 'https://api.emailjs.com/api/v1.0/email/send'
 }
+/* Desestructuración de emailjs_data */
 const {
     SERVICE_ID: serviceID,
     TEMPLATE_ID: templateID,
@@ -24,6 +26,8 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     validateInputs();
 });
+
+/* Seteamos los errores que se muestran en un alert de bootstrap */
 const setErrorMessages = (errors) => {
     const errorDisplay = document.getElementById('alert');
     errorDisplay.innerHTML = ""
@@ -33,10 +37,16 @@ const setErrorMessages = (errors) => {
     });
 }
 
+/* 
+    Chequeamos si el email es valido
+    utilizando expresiones regulares.
+*/
 const isInvalidEmail = (email) => {
     const regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
     return regExp.test(String(email).toLowerCase());
 }
+
+/* Validacion de campos  */
 const validateInputs = () => {
     let errors = []
     let firstNameValue = firstName.value.trim();
@@ -65,14 +75,16 @@ const validateInputs = () => {
         errors.push('Tu mensaje debe contener al menos 25 caracteres');
     }
     if (errors.length != 0) {
+        /* Guarda los errores */
         setErrorMessages(errors);
     } else if (errors.length === 0) {
+        /* Si no existen errores envia el mail */
         sendEmail(firstNameValue, lastNameValue, emailValue, messageValue);
+        /* Vaciamos los campos */
         firstName.value = ""
         lastName.value = ""
         email.value = ""
         message.value = ""
-
     }
 }
 
@@ -85,8 +97,7 @@ const sendEmail = (name, last, email, message) => {
         html: '<p><strong>Su consulta sera respondida a la brevedad</strong></p>',
         showConfirmButton: false,
         timer: 1500
-    })
-
+    });
     const sendData = {
         service_id: serviceID,
         template_id: templateID,
