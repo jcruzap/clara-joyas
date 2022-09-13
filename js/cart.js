@@ -1,7 +1,6 @@
 // Consulta a localStorage
 const cartStorageGet = JSON.parse(localStorage.getItem("cart"));
 let cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
-// <input type="number" name="amount" min="1" max="100" step="1" value="${product.amount}">
 
 // Render html de productos del carrito de compras
 const cartToHtml = (product) => {
