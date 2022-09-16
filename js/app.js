@@ -1,7 +1,7 @@
 // Selectores y variables globales
 let cart = []; /* Arreglo inicial carrito de compras */
 let cartCounter = 0;
-const shoppingBag = document.querySelector('.fa-shopping-bag');
+
 
 // Render html de productos en la pantalla principal
 const productsToHtml = (product) => {
@@ -128,7 +128,7 @@ const addItemToCart = (cartItem) => {
         cartButton.classList.remove('animate__shakeX');
         shoppingBag.setAttribute('data-after', cartCounter);
     }, 500)
-    
+
     // Sweet alert custom modal
     Swal.fire({
         title: 'Producto añadido con éxito!',
@@ -143,18 +143,18 @@ const addItemToCart = (cartItem) => {
     });
 
     /* 
-        *Añadimos escucha de evento click en dos botones que cierran el custom sweet alert.
-        *El boton "Ver carrito" lo cierra y muestra el carrito lateral.
-        *El boton "Seguir comprando" solo lo cierra para poder seguir comprando.
-    */
+     *Añadimos escucha de evento click en dos botones que cierran el custom sweet alert.
+     *El boton "Ver carrito" lo cierra y muestra el carrito lateral.
+     *El boton "Seguir comprando" solo lo cierra para poder seguir comprando.
+     */
 
     const closeSweet = document.querySelectorAll('#closeSweet');
     closeSweet.forEach((sw) => {
-        sw.addEventListener("click" , () => {
+        sw.addEventListener("click", () => {
             Swal.close();
         });
     });
-    
+
     cart.push(cartItem); /* Guarda en arreglo */
     storageSet("cart", cart); /* Guarda en local storage */
     showAllCart();
@@ -169,7 +169,7 @@ const showAllCart = () => {
     cartList.innerHTML = "";
     cart.forEach(product => {
         total = total + (product.price * product.amount);
-        
+
         cartList.innerHTML += cartToHtml(product);
     });
     subTotal.innerHTML = total;
@@ -180,17 +180,17 @@ const storageSet = (key, value) => {
 }
 
 // Al cargar la pagina obtiene el carrito de local storage y lo guarda en el arreglo
-window.onload = function () {
-    const storage = JSON.parse(localStorage.getItem('cart'));
-    const cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
-    if (storage) {
-        cart = storage;
-        cartCounter = cartCounterLocal;
-    }
-    shoppingBag.setAttribute('data-after', cartCounter);
-    // Llamamos a la funcuon que muestra los productos en el carrito lateral
-    showAllCart();
+const storage = JSON.parse(localStorage.getItem('cart'));
+const cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
+if (storage) {
+    cart = storage;
+    cartCounter = cartCounterLocal;
 }
+const shoppingBag = document.querySelector('.fa-shopping-bag');
+shoppingBag.setAttribute('data-after', cartCounter);
+
+// Llamamos a la funcion que muestra los productos en el carrito lateral
+showAllCart();
 
 // Llamamos a la funcion que muestra los productos en pantalla
 showAllProducts();

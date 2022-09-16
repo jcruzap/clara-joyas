@@ -7,14 +7,19 @@ const cartToHtml = (product) => {
     return `
     <tr>
         <td>
+            <button class="btn btn-danger" id="${product.cartId}"><i class="fas fa-times"></i></i></button>
+        </td>
+        <td>
             <img src="../img/products/${product.img}" alt="Imagen de producto">
-            <div>
+        </td>
+        <td>
+            <div class="carritoDescripcion">
                 <h5>${product.name}</h5>
                 <p>${product.description}</p>
             </div>
         </td>
         <td>
-            $${product.price}
+            <strong>$${product.price}</strong>
         </td>
         <td>
             <div class="stepper-input">
@@ -30,11 +35,11 @@ const cartToHtml = (product) => {
             </div>
         </td>
         <td id="price-${product.cartId}" class="animate__animated">
-            $${product.price * product.amount}
+            <strong>
+                $${product.price * product.amount}
+            </strong>    
         </td>
-        <td>
-            <button class="btn btn-danger" id="${product.cartId}">Eliminar <i class="fas fa-trash-alt"></i></i></button>
-        </td>
+        
     </tr>
     `
 }
@@ -57,7 +62,7 @@ const showAllCart = () => {
     }
     if (cartStorageGet === null || cartStorageGet.length === 0) {
         shoppingBag.setAttribute('data-after', 0);
-        table.innerHTML = "<h5>Su carrito esta vacio</h5>";
+        table.innerHTML = `<td><h5>Su carrito esta vacio</h5></td>`;
     }
 }
 

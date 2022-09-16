@@ -1,38 +1,51 @@
 .carrito {
     min-height: 70vh;
-    width: 70vw;
-    margin: 0 auto;
+    width: 80vw;
+    margin: 0rem auto;
 
     .carritoTabla {
+        margin: 4rem 0;
         width: 100%;
-        table-layout: fixed;
-
+        // table-layout: fixed;
         thead {
-
+            background-color: #FBFBFB;
+            border: 1px solid #cccbcb;;
             th {
                 font-family: 'Raleway', sans-serif;
                 font-weight: bold;
                 font-size: 1.2em;
-                padding: 1.2em 0;
+                margin-right: 1rem;
+                padding: 1rem;               
             }
 
-            th:nth-child(1) {
+            th:nth-child(1){
+                width: 5%;
+            }
+            th:nth-child(3){
                 width: 40%;
             }
-
+            
             th:nth-child(2),
-            th:nth-child(3),
             th:nth-child(4),
-            th:nth-child(5) {
-                width: 10%;
+            th:nth-child(5),
+            th:nth-child(6) {
+                width: 15%;
             }
         }
 
         tbody {
-            #contador {
-                border: 1px solid black;
+            tr{
+                border: 1px solid #cccbcb;
+                td{
+                    margin-left: 10px;
+                    img{
+                        width: 220px;
+                        height: 160px;
+                    }
+                    padding: 1rem;
+                }
             }
-
+            
             .stepper-input {
                 width: 90px;
                 height: 40px;
@@ -84,5 +97,12 @@
                 }
             }
         }
+    }
+    .carritoTotal{
+        border: 1px solid red;
+        width: 50%;
+        margin-left: 50%;
+        margin-bottom: 4rem;
+        min-height: 40vh;
     }
 }

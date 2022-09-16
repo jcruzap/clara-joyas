@@ -627,25 +627,37 @@
 /* Carrito */
 .carrito {
   min-height: 70vh;
-  width: 70vw;
-  margin: 0 auto; }
+  width: 80vw;
+  margin: 0rem auto; }
   .carrito .carritoTabla {
-    width: 100%;
-    table-layout: fixed; }
-    .carrito .carritoTabla thead th {
-      font-family: 'Raleway', sans-serif;
-      font-weight: bold;
-      font-size: 1.2em;
-      padding: 1.2em 0; }
-    .carrito .carritoTabla thead th:nth-child(1) {
-      width: 40%; }
-    .carrito .carritoTabla thead th:nth-child(2),
-    .carrito .carritoTabla thead th:nth-child(3),
-    .carrito .carritoTabla thead th:nth-child(4),
-    .carrito .carritoTabla thead th:nth-child(5) {
-      width: 10%; }
-    .carrito .carritoTabla tbody #contador {
-      border: 1px solid black; }
+    margin: 4rem 0;
+    width: 100%; }
+    .carrito .carritoTabla thead {
+      background-color: #FBFBFB;
+      border: 1px solid #cccbcb; }
+      .carrito .carritoTabla thead th {
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-right: 1rem;
+        padding: 1rem; }
+      .carrito .carritoTabla thead th:nth-child(1) {
+        width: 5%; }
+      .carrito .carritoTabla thead th:nth-child(3) {
+        width: 40%; }
+      .carrito .carritoTabla thead th:nth-child(2),
+      .carrito .carritoTabla thead th:nth-child(4),
+      .carrito .carritoTabla thead th:nth-child(5),
+      .carrito .carritoTabla thead th:nth-child(6) {
+        width: 15%; }
+    .carrito .carritoTabla tbody tr {
+      border: 1px solid #cccbcb; }
+      .carrito .carritoTabla tbody tr td {
+        margin-left: 10px;
+        padding: 1rem; }
+        .carrito .carritoTabla tbody tr td img {
+          width: 220px;
+          height: 160px; }
     .carrito .carritoTabla tbody .stepper-input {
       width: 90px;
       height: 40px;
@@ -683,6 +695,12 @@
             color: #222;
             font-size: 15px;
             line-height: 40px; }
+  .carrito .carritoTotal {
+    border: 1px solid red;
+    width: 50%;
+    margin-left: 50%;
+    margin-bottom: 4rem;
+    min-height: 40vh; }
 
 /* Responsive */
 @media (max-width: 1660px) {
