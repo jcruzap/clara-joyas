@@ -2,6 +2,11 @@
 const cartStorageGet = JSON.parse(localStorage.getItem("cart"));
 let cartCounterLocal = JSON.parse(localStorage.getItem('cart-counter'));
 
+// Retorna el valor de un numero convertido en un formato diferente dependiendo de los parametros que le coloquemos
+const digitsConvert = (number) =>{
+    return number.toLocaleString('en-US',{maximumFractionDigits:2});
+}
+
 // Render html de productos del carrito de compras
 const cartToHtml = (product) => {
     return `
@@ -18,8 +23,8 @@ const cartToHtml = (product) => {
                 <p>${product.description}</p>
             </div>
         </td>
-        <td>
-            <strong>$${product.price}</strong>
+        <td class="precios">
+            $${digitsConvert(product.price)}
         </td>
         <td>
             <div class="stepper-input">
@@ -34,10 +39,8 @@ const cartToHtml = (product) => {
                 </div>
             </div>
         </td>
-        <td id="price-${product.cartId}" class="animate__animated">
-            <strong>
-                $${product.price * product.amount}
-            </strong>    
+        <td id="price-${product.cartId}" class="precios animate__animated">
+            $${digitsConvert(product.price * product.amount)}
         </td>
         
     </tr>
@@ -48,21 +51,23 @@ const cartToHtml = (product) => {
 const showAllCart = () => {
     const shoppingBag = document.querySelector('.fa-shopping-bag');
     shoppingBag.setAttribute('data-after', cartCounterLocal);
-
+    let subTotal = 0;
     const table = document.getElementById('tableBody'); /* Contenedor de la tabla de productos */
-
+    
     table.innerHTML = "";
 
     if (cartStorageGet) {
         cartStorageGet.forEach(product => {
+            subTotal = subTotal + (product.price * product.amount);
             table.innerHTML += cartToHtml(product);
         });
+        finalTotalCart(subTotal);
         eventsStepper();
         eventsDeleteButton();
     }
     if (cartStorageGet === null || cartStorageGet.length === 0) {
         shoppingBag.setAttribute('data-after', 0);
-        table.innerHTML = `<td><h5>Su carrito esta vacio</h5></td>`;
+        table.innerHTML = `<tr><td style ="width: 15%;"><h5>Su carrito esta vacío</h5></td></tr>`;
     }
 }
 
@@ -142,7 +147,7 @@ const eventsStepper = () => {
                 value--;
                 stepper.setAttribute("value", value);
                 price.innerHTML = ""
-                price.innerHTML += `$${product.price * value}`
+                price.innerHTML += `$${digitsConvert(product.price * value)}`
                 price.classList.add('animate__fadeIn');
                 setTimeout(() => {
                     price.classList.remove('animate__fadeIn');
@@ -187,7 +192,7 @@ const eventsStepper = () => {
                     price.classList.remove('animate__fadeIn');
                 }, 500);
                 price.innerHTML = ""
-                price.innerHTML += `$${product.price * value}`
+                price.innerHTML += `$${digitsConvert(product.price * value)}`
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
@@ -195,5 +200,15 @@ const eventsStepper = () => {
         });
     });
 }
+
+// Total del carrito
+const finalTotalCart = (subtotal) =>{
+    const finalSubtotal = document.getElementById('finalSubtotal');
+    const finalTotal = document.getElementById('finalTotal');
+    /* Renderizado de subtotal y total */
+    finalSubtotal.innerHTML = `$${digitsConvert(subtotal)}`;
+    finalTotal.innerHTML = `$${digitsConvert(subtotal)}`;
+}
+
 // Llamamos a la funcion que muestro los productos en pantalla
 showAllCart();

@@ -4,27 +4,34 @@
     margin: 0rem auto;
 
     .carritoTabla {
+        .precios{
+            font-weight: bold;
+        }
         margin: 4rem 0;
         width: 100%;
+
         // table-layout: fixed;
         thead {
             background-color: #FBFBFB;
-            border: 1px solid #cccbcb;;
+            border: 1px solid #cccbcb;
+            ;
+
             th {
                 font-family: 'Raleway', sans-serif;
                 font-weight: bold;
                 font-size: 1.2em;
                 margin-right: 1rem;
-                padding: 1rem;               
+                padding: 1rem;
             }
 
-            th:nth-child(1){
+            th:nth-child(1) {
                 width: 5%;
             }
-            th:nth-child(3){
+
+            th:nth-child(3) {
                 width: 40%;
             }
-            
+
             th:nth-child(2),
             th:nth-child(4),
             th:nth-child(5),
@@ -34,18 +41,21 @@
         }
 
         tbody {
-            tr{
+            tr {
                 border: 1px solid #cccbcb;
-                td{
+
+                td {
                     margin-left: 10px;
-                    img{
+
+                    img {
                         width: 220px;
                         height: 160px;
                     }
+
                     padding: 1rem;
                 }
             }
-            
+
             .stepper-input {
                 width: 90px;
                 height: 40px;
@@ -98,11 +108,42 @@
             }
         }
     }
-    .carritoTotal{
-        border: 1px solid red;
-        width: 50%;
-        margin-left: 50%;
+
+    .carritoFinal {
+        width: 40%;
+        margin-left: 60%;
         margin-bottom: 4rem;
-        min-height: 40vh;
+        min-height: 30vh;
+        border: 1px solid #cccbcb;
+        display: flex;
+        flex-direction: column;
+        h4 {
+            padding: 0.7em 1em;
+            font-weight: 700;
+            font-family: 'Raleway', sans-serif;
+            background-color: #FBFBFB;
+            border-bottom: 1px solid #cccbcb;
+            margin: 0;
+        }
+
+        .subTabla {
+            width: 80%;
+            margin: auto auto;
+            tbody{
+                .items{
+                    font-family: 'Open Sans', sans-serif;
+                    th,td{
+                        padding: 1rem;
+                        font-size: 1.2rem;
+                        color: #4a4a4a;
+                        border-bottom: 1px solid #cccbcb;
+                    }
+                    td{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
     }
 }

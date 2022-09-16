@@ -632,6 +632,8 @@
   .carrito .carritoTabla {
     margin: 4rem 0;
     width: 100%; }
+    .carrito .carritoTabla .precios {
+      font-weight: bold; }
     .carrito .carritoTabla thead {
       background-color: #FBFBFB;
       border: 1px solid #cccbcb; }
@@ -695,12 +697,33 @@
             color: #222;
             font-size: 15px;
             line-height: 40px; }
-  .carrito .carritoTotal {
-    border: 1px solid red;
-    width: 50%;
-    margin-left: 50%;
+  .carrito .carritoFinal {
+    width: 40%;
+    margin-left: 60%;
     margin-bottom: 4rem;
-    min-height: 40vh; }
+    min-height: 30vh;
+    border: 1px solid #cccbcb;
+    display: flex;
+    flex-direction: column; }
+    .carrito .carritoFinal h4 {
+      padding: 0.7em 1em;
+      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+      background-color: #FBFBFB;
+      border-bottom: 1px solid #cccbcb;
+      margin: 0; }
+    .carrito .carritoFinal .subTabla {
+      width: 80%;
+      margin: auto auto; }
+      .carrito .carritoFinal .subTabla tbody .items {
+        font-family: 'Open Sans', sans-serif; }
+        .carrito .carritoFinal .subTabla tbody .items th, .carrito .carritoFinal .subTabla tbody .items td {
+          padding: 1rem;
+          font-size: 1.2rem;
+          color: #4a4a4a;
+          border-bottom: 1px solid #cccbcb; }
+        .carrito .carritoFinal .subTabla tbody .items td {
+          font-weight: bold; }
 
 /* Responsive */
 @media (max-width: 1660px) {
