@@ -91,12 +91,10 @@ const validateInputs = () => {
 
 const sendEmail = (name, last, email, message) => {
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: 'Mensaje enviado con éxito!',
         html: '<p><strong>Su consulta sera respondida a la brevedad</strong></p>',
-        showConfirmButton: false,
-        timer: 1500
+        showConfirmButton: true,
     });
     const sendData = {
         service_id: serviceID,
@@ -122,9 +120,3 @@ const sendEmail = (name, last, email, message) => {
         .then((json) => console.log(`Correo enviado... status: ${json.status}`))
         .catch((error) => console.log(`El correo no se pudo enviar. Error: ${error}`));
 }
-
-// let select = document.getElementById('reason-select');
-// select.addEventListener('change', () => {
-//     let value = select.options[select.selectedIndex].textContent;
-//     console.log(value);
-// });
