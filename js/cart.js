@@ -51,17 +51,18 @@ const cartToHtml = (product) => {
 const showAllCart = () => {
     const shoppingBag = document.querySelector('.fa-shopping-bag');
     shoppingBag.setAttribute('data-after', cartCounterLocal);
-    let subTotal = 0;
+    
     const table = document.getElementById('tableBody'); /* Contenedor de la tabla de productos */
     
     table.innerHTML = "";
 
     if (cartStorageGet) {
         cartStorageGet.forEach(product => {
-            subTotal = subTotal + (product.price * product.amount);
+            // subTotal = subTotal + (product.price * product.amount);
             table.innerHTML += cartToHtml(product);
         });
-        finalTotalCart(subTotal);
+        // finalTotalCart(subTotal);
+        calcSubTotal();
         eventsStepper();
         eventsDeleteButton();
     }
@@ -113,6 +114,7 @@ const removeItem = (id) => {
     showAllCart(); /* Muestra el nuevo carrito en pantalla */
 
 }
+
 // Contador que aumenta o disminuye la cantidad de productos de 1 en 1
 const eventsStepper = () => {
     cartStorageGet.forEach(product => {
@@ -148,6 +150,7 @@ const eventsStepper = () => {
                 stepper.setAttribute("value", value);
                 price.innerHTML = ""
                 price.innerHTML += `$${digitsConvert(product.price * value)}`
+                
                 price.classList.add('animate__fadeIn');
                 setTimeout(() => {
                     price.classList.remove('animate__fadeIn');
@@ -155,6 +158,7 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
+                calcSubTotal();
             }
             if (value === 0) {
                 /* Custom modal sweet alert */
@@ -174,6 +178,7 @@ const eventsStepper = () => {
                         product.amount = 1
                         localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                         showAllCart();
+                        calcSubTotal();
                     }
                 });
 
@@ -188,6 +193,7 @@ const eventsStepper = () => {
                 value++;
                 stepper.setAttribute("value", value);
                 price.classList.add('animate__fadeIn');
+                
                 setTimeout(() => {
                     price.classList.remove('animate__fadeIn');
                 }, 500);
@@ -196,15 +202,26 @@ const eventsStepper = () => {
                 product.amount = value
                 localStorage.setItem("cart", JSON.stringify(cartStorageGet));
                 productAmountList.style.marginTop = `-${value * 40}px`;
+                calcSubTotal();
             }
         });
     });
 }
-
+const calcSubTotal = () =>{
+    let subTotal = 0;
+    if (cartStorageGet) {
+        cartStorageGet.forEach(product => {
+            subTotal = subTotal + (product.price * product.amount);
+        });
+        finalTotalCart(subTotal);  
+    }
+}
 // Total del carrito
 const finalTotalCart = (subtotal) =>{
     const finalSubtotal = document.getElementById('finalSubtotal');
     const finalTotal = document.getElementById('finalTotal');
+    finalSubtotal.innerHTML = ""
+    finalTotal.innerHTML = ""
     /* Renderizado de subtotal y total */
     finalSubtotal.innerHTML = `$${digitsConvert(subtotal)}`;
     finalTotal.innerHTML = `$${digitsConvert(subtotal)}`;
