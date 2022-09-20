@@ -11,7 +11,4 @@ Proyecto final del curso de Javascript en CODERHOUSE.
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img height="40" align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   </div>
-  <br>
-## Redes
--[Instagram](https://www.instagram.com/acatodosn/?theme=dark)<br>
--[Facebook](https://www.facebook.com/profile.php?id=100063580241052)
+  
