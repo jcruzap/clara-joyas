@@ -13,5 +13,5 @@ Proyecto final del curso de Javascript en CODERHOUSE.
   </div>
   <br>
 ## Redes
-- [Instagram](https://www.instagram.com/acatodosn/?theme=dark)<br>
-- [Facebook](https://www.facebook.com/profile.php?id=100063580241052)
+-[Instagram](https://www.instagram.com/acatodosn/?theme=dark)<br>
+-[Facebook](https://www.facebook.com/profile.php?id=100063580241052)
