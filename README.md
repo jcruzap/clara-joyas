@@ -1,7 +1,5 @@
-# ACA TODO - ecommerce
-Proyecto final del curso de Javascript en CODERHOUSE.
-## Objetivo
--Este proyecto fue realizado para colaborar con una empresa familiar dedicada al rubro de mobiliarios.
+# CLARA JOYAS - ecommerce
+-Este proyecto fue realizado para colaborar con un emprendimiento familiar
 -El objetivo principal es darle una dinamica diferente a la pagina añadiendo la funcionalidad de "Carrito de compras"
 ## Tecnologias implementadas
   <div>
@@ -12,3 +10,4 @@ Proyecto final del curso de Javascript en CODERHOUSE.
     <img height="40" align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   </div>
   
+# clara-joyas
