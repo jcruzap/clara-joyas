@@ -5,11 +5,11 @@
     border-radius: 5px;
     font-weight: 700;
     font-size: 1rem;
-    background-color: #151D1B;
+    background-color: #0E0D0B;
     cursor: pointer;
 
     &:hover {
-        background-color: lighten($color: #151D1B, $amount: 20);
+        background-color: lighten($color: #0E0D0B, $amount: 20);
         transition: all .5s ease-in;
     }
 }
@@ -18,16 +18,19 @@
     background: none;
     font-style: italic;
     font-size: 1.2rem;
+
     &:hover {
         background-color: lighten($color: #98ab42, $amount: 10);
         text-decoration: none;
         // transition: all .5s ease-in;
     }
 }
-.seguirComprando{
-    background-color: #98ab42;
+
+.seguirComprando {
+    background-color: #BF6D69;
+
     &:hover {
-        background-color: lighten($color: #98ab42, $amount: 10);
+        background-color: lighten($color: #BF6D69, $amount: 10);
         // transition: all .5s ease-in;
     }
 }

@@ -1,63 +1,65 @@
-[{
-    "id": 1,
-    "name": "Isla Lustrada",
-    "description": "Madera maciza guayubira. Detalles de lustrado que la hacen ver unica.",
-    "price": 15000,
-    "img": "producto1.jpg"
-}, 
-{
-    "id": 2,
-    "name": "Desayunador c/sillas",
-    "description": "Pino robusto con uniones espigadas. Incluye banquetas.",
-    "price": 24950,
-    "img": "producto2.jpg"
-}, 
-{
-    "id": 3,
-    "name": "Vinoteca",
-    "description": "Ideal para almacenar esos vinos que tanto deseamos conservar.",
-    "price": 1000,
-    "img": "producto3.jpg"
-}, 
-{
-    "id": 4,
-    "name": "Bajo mesada",
-    "description": "Mueble bajo mesada con tres puertas. No incluye mesada.",
-    "price": 17600,
-    "img": "producto4.jpg"
-}, 
-{
-    "id": 5,
-    "name": "Sillones y ratona",
-    "description": "Juego de sillones y mesita ratona mas que ideal para decorar tu jardin o patio.",
-    "price": 22000,
-    "img": "producto5.jpg"
-}, 
-{
-    "id": 6,
-    "name": "Ropero XL",
-    "description": "Ropero tamaño XL con mucho espacio para guardar toda tu ropa.",
-    "price": 35760,
-    "img": "producto6.jpg"
-}, 
-{
-    "id": 7,
-    "name": "Jugetero kids",
-    "description": "Organizador de jugetes con cajones retraibles. No incluye juegos.",
-    "price": 197000,
-    "img": "producto7.jpg"
-}, 
-{
-    "id": 8,
-    "name": "Mesada granito",
-    "description": "Mesada granito color gris con bacha integrada. No incluye mueble.",
-    "price": 20800,
-    "img": "producto8.jpg"
-}, 
-{
-    "id": 9,
-    "name": "Juego rustico c/sillas",
-    "description": "Mueble bajo mesada con tres puertas. No incluye mesada.",
-    "price": 55900,
-    "img": "producto9.jpg"
-}]
+[
+    {
+        "id": 1,
+        "name": "Collar Coins",
+        "description": "",
+        "price": 9161,
+        "img": "producto1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Anillo Trenzado Manhattan",
+        "description": "",
+        "price": 24950,
+        "img": "producto2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Pulsera Venice Roja",
+        "description": "",
+        "price": 5030,
+        "img": "producto3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Aro pasante palito cubic unidad",
+        "description": "",
+        "price": 3000,
+        "img": "producto4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Argollas Mili",
+        "description": "20mm (par/livianas)",
+        "price": 9800,
+        "img": "producto5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Anillo falange Maya",
+        "description": "",
+        "price": 3760,
+        "img": "producto6.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Pulsera Hadid",
+        "description": "16,5cm con prolongador de 4cm.",
+        "price": 6300,
+        "img": "producto7.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Cuff triple con cadena Ruth",
+        "description": "(unidad)",
+        "price": 2800,
+        "img": "producto8.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Cadena Fuerza Fina",
+        "description": "",
+        "price": 8500,
+        "img": "producto9.jpg"
+    }
+]

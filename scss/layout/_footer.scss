@@ -1,19 +1,21 @@
 .footer {
     grid-area: footer;
+
     .contenedorFooter {
         min-height: 45vh;
-        background-color: #151D1B;
+        background-color: #EFF3F2;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
         align-content: center;
+
         .seccionLogo {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             align-items: center;
             width: 20%;
-            
+
             .logoFooter {
                 width: 100px;
                 cursor: pointer;
@@ -26,6 +28,7 @@
                 margin: 0;
                 text-align: left;
                 line-height: normal;
+
                 // width: 210px;
                 span {
                     font-weight: bold;
@@ -47,15 +50,17 @@
     }
 
     .seccionCopyright {
-        background-color: #151D1B;
-        border-top: 1px solid #2C3033;
+        background-color: #BF6D69;
+        border-top: 1px solid #BF8654;
+
         p {
-            color: #C4C4C4;
+            color: #EFF3F2;
             font-family: 'Open Sans', sans-serif;
             font-size: 14px;
             margin: 0;
             text-align: center;
             padding: 2rem 0;
+
             span {
                 font-weight: bold;
             }

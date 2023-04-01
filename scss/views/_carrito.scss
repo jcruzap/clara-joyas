@@ -4,9 +4,10 @@
     margin: 0rem auto;
 
     .carritoTabla {
-        .precios{
+        .precios {
             font-weight: bold;
         }
+
         margin: 4rem 0;
         width: 100%;
 
@@ -79,7 +80,7 @@
                         height: 100%;
                         border-radius: 10px;
                         background: #fff;
-                        color: #222;
+                        color: #40270B;
                         font-size: 15px;
                         cursor: pointer;
                         border: none;
@@ -117,6 +118,7 @@
         border: 1px solid #cccbcb;
         display: flex;
         flex-direction: column;
+
         h4 {
             padding: 0.7em 1em;
             font-weight: 700;
@@ -129,16 +131,20 @@
         .subTabla {
             width: 80%;
             margin: auto auto;
-            tbody{
-                .items{
+
+            tbody {
+                .items {
                     font-family: 'Open Sans', sans-serif;
-                    th,td{
+
+                    th,
+                    td {
                         padding: 1rem;
                         font-size: 1.2rem;
                         color: #4a4a4a;
                         border-bottom: 1px solid #cccbcb;
                     }
-                    td{
+
+                    td {
                         font-weight: bold;
                     }
                 }

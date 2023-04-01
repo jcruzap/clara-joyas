@@ -3,29 +3,33 @@
 }
 
 #bannerProductos {
-    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657546761/banner-productos_v3d6lq.jpg');
+    background-image: url('https://d3ugyf2ht6aenh.cloudfront.net/stores/880/364/products/3240659c-2f7b-403f-9d0f-e370926775ad-0e9fe4621de0cbe3d316397646717796-640-0.jpeg');
 }
 
 .medidaPortada {
-    background-image: url('https://res.cloudinary.com/dtpfo51rx/image/upload/v1657546760/banner-medida_gjkvuj.jpg');
+    background-image: url('https://cdn.shopify.com/s/files/1/0564/9268/7541/articles/DSC_08221.jpg');
     background-position: center;
     background-position-y: 65%;
     height: 550px;
 }
 
-#offcanvasExample{
+#offcanvasExample {
     min-width: 500px;
 }
+
 .offcanvas {
-    .subtotal{
+    .subtotal {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-left: 1rem;
-        h4,span{
+
+        h4,
+        span {
             margin: 0;
         }
     }
+
     .offcanvas-body {
         #cartList {
             display: flex;
